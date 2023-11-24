@@ -4,5 +4,6 @@ module.exports = {
   //globalSetup: "jest-preset-angular/global-setup",
   moduleNameMapper: {
     "^@\\/components/(.*)$": "<rootDir>/src/app/components/$1",
+    "^@\\/pages/(.*)$": "<rootDir>/src/app/pages/$1",
   },
 };
