@@ -1,0 +1,3 @@
+:host {
+  @apply px-2 sm:p-6 lg:p-8;
+}
