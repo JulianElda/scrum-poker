@@ -2,12 +2,16 @@ import { FooterComponent } from "@/components/footer/footer.component";
 import { HeaderComponent } from "@/components/header/header.component";
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
+import { getAuth, provideAuth } from "@angular/fire/auth";
+import { getFirestore, provideFirestore } from "@angular/fire/firestore";
 import { BrowserModule } from "@angular/platform-browser";
 import {
-  provideRouter,
   RouterOutlet,
+  provideRouter,
   withComponentInputBinding,
 } from "@angular/router";
+import { environment } from "src/environments/environment";
 import { RootComponent } from "./root.component";
 import { rootRoutes } from "./root.routes";
 
@@ -19,6 +23,9 @@ import { rootRoutes } from "./root.routes";
     RouterOutlet,
     HeaderComponent,
     FooterComponent,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ],
   bootstrap: [RootComponent],
   providers: [provideRouter(rootRoutes, withComponentInputBinding())],

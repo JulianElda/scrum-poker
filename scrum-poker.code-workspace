@@ -24,8 +24,7 @@
       "dbaeumer.vscode-eslint",
       "csstools.postcss",
       "angular.ng-template",
-      "esbenp.prettier-vscode",
-      "miclo.sort-typescript-imports"
+      "esbenp.prettier-vscode"
     ]
   }
 }
