@@ -1,0 +1,31 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "files.associations": {
+      "*.css": "postcss"
+    },
+    "files.exclude": {
+      ".npm": true,
+      ".angular": true,
+      "build": true,
+      "coverage": true,
+      "node_modules": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "bradlc.vscode-tailwindcss",
+      "deque-systems.vscode-axe-linter",
+      "dbaeumer.vscode-eslint",
+      "csstools.postcss",
+      "angular.ng-template",
+      "esbenp.prettier-vscode",
+      "miclo.sort-typescript-imports"
+    ]
+  }
+}
