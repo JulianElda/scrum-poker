@@ -1,21 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  Spectator,
+  byText,
+  createComponentFactory,
+} from "@ngneat/spectator/jest";
+import { CardComponent } from "./card.component";
 
-import { CardComponent } from './card.component';
-
-describe('CardComponent', () => {
-  let component: CardComponent;
-  let fixture: ComponentFixture<CardComponent>;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [CardComponent]
-    });
-    fixture = TestBed.createComponent(CardComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+describe("CardComponent", () => {
+  let spectator: Spectator<CardComponent>;
+  const createComponent = createComponentFactory({
+    component: CardComponent,
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it("shows text", () => {
+    spectator = createComponent({
+      props: {
+        text: "13",
+      },
+    });
+    expect(spectator.query(byText("13"))).toBeTruthy();
   });
 });

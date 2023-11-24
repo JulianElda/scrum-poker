@@ -1,21 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  Spectator,
+  byTestId,
+  createComponentFactory,
+} from "@ngneat/spectator/jest";
+import { FooterComponent } from "./footer.component";
 
-import { FooterComponent } from './footer.component';
-
-describe('FooterComponent', () => {
-  let component: FooterComponent;
-  let fixture: ComponentFixture<FooterComponent>;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [FooterComponent]
-    });
-    fixture = TestBed.createComponent(FooterComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+describe("FooterComponent", () => {
+  let spectator: Spectator<FooterComponent>;
+  const createComponent = createComponentFactory({
+    component: FooterComponent,
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it("shows text", () => {
+    spectator = createComponent();
+    const hyperlinkElement = spectator.query(byTestId("footer-link"));
+    expect(hyperlinkElement).toHaveAttribute(
+      "href",
+      "https://github.com/JulianElda/scrum-poker"
+    );
   });
 });

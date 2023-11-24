@@ -1,21 +1,18 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  Spectator,
+  byLabel,
+  createComponentFactory,
+} from "@ngneat/spectator/jest";
+import { CreateRoomComponent } from "./create-room.component";
 
-import { CreateRoomComponent } from './create-room.component';
-
-describe('CreateRoomComponent', () => {
-  let component: CreateRoomComponent;
-  let fixture: ComponentFixture<CreateRoomComponent>;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [CreateRoomComponent]
-    });
-    fixture = TestBed.createComponent(CreateRoomComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+describe("CreateRoomComponent", () => {
+  let spectator: Spectator<CreateRoomComponent>;
+  const createComponent = createComponentFactory({
+    component: CreateRoomComponent,
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it("shows name input field", () => {
+    spectator = createComponent();
+    expect(spectator.query(byLabel("Name"))).toBeTruthy();
   });
 });

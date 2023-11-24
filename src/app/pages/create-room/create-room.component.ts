@@ -1,7 +1,7 @@
-import { Component } from "@angular/core";
+import { ButtonComponent } from "@/components/button/button.component";
+import { InputComponent } from "@/components/input/input.component";
 import { CommonModule } from "@angular/common";
-import { InputComponent } from "src/app/components/input/input.component";
-import { ButtonComponent } from "src/app/components/button/button.component";
+import { Component } from "@angular/core";
 import { FormControl } from "@angular/forms";
 
 @Component({

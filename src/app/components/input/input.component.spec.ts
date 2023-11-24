@@ -1,21 +1,33 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  Spectator,
+  byLabel,
+  byPlaceholder,
+  byTestId,
+  byValue,
+  createComponentFactory,
+} from "@ngneat/spectator/jest";
+import { InputComponent } from "./input.component";
+import { FormControl } from "@angular/forms";
 
-import { InputComponent } from './input.component';
-
-describe('InputComponent', () => {
-  let component: InputComponent;
-  let fixture: ComponentFixture<InputComponent>;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [InputComponent]
-    });
-    fixture = TestBed.createComponent(InputComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+describe("InputComponent", () => {
+  let spectator: Spectator<InputComponent>;
+  const createComponent = createComponentFactory({
+    component: InputComponent,
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it("shows input and label elements", () => {
+    spectator = createComponent({
+      props: {
+        id: "input-id",
+        label: "Input label",
+        placeholder: "Input placeholder",
+        formControl: new FormControl("Initial value"),
+      },
+    });
+
+    expect(spectator.query(byLabel("Input label"))).toBeTruthy();
+    expect(spectator.query(byTestId("input-id"))).toBeTruthy();
+    expect(spectator.query(byPlaceholder("Input placeholder"))).toBeTruthy();
+    expect(spectator.query(byValue("Initial value"))).toBeTruthy();
   });
 });

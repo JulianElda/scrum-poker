@@ -1,21 +1,18 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  Spectator,
+  byText,
+  createComponentFactory,
+} from "@ngneat/spectator/jest";
+import { HeaderComponent } from "./header.component";
 
-import { HeaderComponent } from './header.component';
-
-describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HeaderComponent]
-    });
-    fixture = TestBed.createComponent(HeaderComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+describe("HeaderComponent", () => {
+  let spectator: Spectator<HeaderComponent>;
+  const createComponent = createComponentFactory({
+    component: HeaderComponent,
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it("shows title", () => {
+    spectator = createComponent();
+    expect(spectator.query(byText("Planning Poker"))).toBeTruthy();
   });
 });

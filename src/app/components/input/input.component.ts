@@ -6,8 +6,26 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
   selector: "scp-input",
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: "./input.component.html",
   styleUrls: ["./input.component.css"],
+  template: `
+    <div class="my-2">
+      <label
+        [for]="id"
+        class="label">
+        {{ label }}
+      </label>
+      <div class="mt-1">
+        <input
+          type="text"
+          class="input"
+          [name]="id"
+          [id]="id"
+          [attr.data-testid]="id"
+          [placeholder]="placeholder"
+          [formControl]="formControl" />
+      </div>
+    </div>
+  `,
 })
 export class InputComponent {
   @Input({ required: true }) id = "";

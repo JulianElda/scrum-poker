@@ -1,21 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  Spectator,
+  byText,
+  createComponentFactory,
+} from "@ngneat/spectator/jest";
+import { ButtonComponent } from "./button.component";
 
-import { ButtonComponent } from './button.component';
-
-describe('ButtonComponent', () => {
-  let component: ButtonComponent;
-  let fixture: ComponentFixture<ButtonComponent>;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [ButtonComponent]
-    });
-    fixture = TestBed.createComponent(ButtonComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+describe("ButtonComponent", () => {
+  let spectator: Spectator<ButtonComponent>;
+  const createComponent = createComponentFactory({
+    component: ButtonComponent,
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it("shows text", () => {
+    spectator = createComponent({
+      props: {
+        text: "Button text",
+      },
+    });
+
+    expect(spectator.query(byText("Button text"))).toBeTruthy();
   });
 });
