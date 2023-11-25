@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
   selector: "scp-button",
-  styleUrl: "./button.component.css",
   standalone: true,
   imports: [CommonModule],
+  styleUrl: "./button.component.css",
   template: `
     <button
       type="button"

@@ -1,0 +1,3 @@
+:host {
+  @apply block rounded-md bg-white p-2 shadow sm:p-4;
+}

@@ -3,7 +3,7 @@ import {
   byTestId,
   createComponentFactory,
 } from "@ngneat/spectator/jest";
-import { HyperlinkComponent } from "@/components/hyperlink/hyperlink.component";
+import { HyperlinkComponent } from "@scp/components/hyperlink/hyperlink.component";
 
 describe("HyperlinkComponent", () => {
   let spectator: Spectator<HyperlinkComponent>;

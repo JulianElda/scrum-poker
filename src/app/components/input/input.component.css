@@ -1,5 +1,5 @@
 .label {
-  @apply block text-sm font-semibold leading-6 text-gray-800;
+  @apply block text-sm font-semibold leading-4 text-gray-800;
 }
 
 .input {

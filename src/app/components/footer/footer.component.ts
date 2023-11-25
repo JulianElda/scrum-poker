@@ -1,12 +1,12 @@
-import { HyperlinkComponent } from "@/components/hyperlink/hyperlink.component";
 import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
+import { HyperlinkComponent } from "@scp/components/hyperlink/hyperlink.component";
 
 @Component({
   selector: "scp-footer",
-  styleUrl: "./footer.component.css",
   standalone: true,
   imports: [CommonModule, HyperlinkComponent],
+  styleUrl: "./footer.component.css",
   template: `
     <div class="container mx-auto">
       <div class="flex justify-end">
