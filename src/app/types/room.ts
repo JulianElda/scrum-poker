@@ -4,3 +4,8 @@ export interface Room {
   date: Timestamp;
   moderator: string;
 }
+
+export interface Participant {
+  name: string;
+  uid: string;
+}

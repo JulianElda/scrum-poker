@@ -23,6 +23,7 @@
     "paths": {
       "@scp/components/*": ["./src/app/components/*"],
       "@scp/pages/*": ["./src/app/pages/*"],
+      "@scp/services/*": ["./src/app/services/*"],
       "@scp/types": ["./src/app/types"]
     }
   },

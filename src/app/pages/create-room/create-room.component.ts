@@ -1,19 +1,12 @@
 import { CommonModule } from "@angular/common";
 import { Component, inject } from "@angular/core";
 import { Auth, signInAnonymously } from "@angular/fire/auth";
-import {
-  DocumentReference,
-  Firestore,
-  Timestamp,
-  addDoc,
-  collection,
-} from "@angular/fire/firestore";
 import { FormControl } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ButtonComponent } from "@scp/components/button/button.component";
 import { CardLayoutComponent } from "@scp/components/card-layout/card-layout.component";
 import { InputComponent } from "@scp/components/input/input.component";
-import { Collections, Room } from "@scp/types";
+import { FirebaseService } from "@scp/services/firebase.service";
 
 @Component({
   selector: "scp-create-room",
@@ -37,46 +30,20 @@ import { Collections, Room } from "@scp/types";
   `,
 })
 export class CreateRoomComponent {
-  private firestore = inject(Firestore);
   private auth = inject(Auth);
   private router = inject(Router);
+  private firebaseService = inject(FirebaseService);
 
   protected moderatorName = new FormControl("My name");
 
   protected async onCreateRoom() {
     const authUser = await signInAnonymously(this.auth);
-    const newRoom = await this.createRoom(authUser.user.uid);
-    await this.createRoomModerator(
+    const newRoom = await this.firebaseService.createRoom(authUser.user.uid);
+    await this.firebaseService.createRoomParticipant(
       newRoom.id,
       authUser.user.uid,
       this.moderatorName.value!
     );
     this.router.navigate(["/room", { id: newRoom.id }]);
-  }
-
-  private async createRoom(moderator: string): Promise<DocumentReference> {
-    return addDoc(collection(this.firestore, Collections.ROOM), <Room>{
-      date: Timestamp.fromDate(new Date()),
-      moderator,
-    });
-  }
-
-  private async createRoomModerator(
-    roomId: string,
-    uid: string,
-    name: string
-  ): Promise<DocumentReference> {
-    return addDoc(
-      collection(
-        this.firestore,
-        Collections.ROOM,
-        roomId,
-        Collections.PARTICIPANT
-      ),
-      {
-        name,
-        uid,
-      }
-    );
   }
 }

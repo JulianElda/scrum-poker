@@ -1,16 +1,25 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnDestroy, OnInit, inject } from "@angular/core";
-import { Auth, User, user, signInAnonymously } from "@angular/fire/auth";
-import { doc, getDoc, Firestore } from "@angular/fire/firestore";
+import { Auth, User, user } from "@angular/fire/auth";
+import { Firestore, collectionData, collection } from "@angular/fire/firestore";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Collections } from "@scp/types";
-import { Subscription } from "rxjs";
+import { Collections, Participant } from "@scp/types";
+import { Observable, Subscription } from "rxjs";
 
 @Component({
   selector: "scp-game-room",
   standalone: true,
   imports: [CommonModule],
-  template: ` <p>game-room {{ roomId }}</p> `,
+  template: `
+    <div>
+      <p>game-room {{ roomId }}</p>
+      <ul>
+        <li *ngFor="let participant of participants$ | async">
+          {{ participant.name }}
+        </li>
+      </ul>
+    </div>
+  `,
   styleUrl: "./game-room.component.css",
 })
 export class GameRoomComponent implements OnInit, OnDestroy {
@@ -23,6 +32,14 @@ export class GameRoomComponent implements OnInit, OnDestroy {
   private userSignIn: Subscription | undefined;
 
   roomId = this.activatedRoute.snapshot.paramMap.get("id") || "";
+  protected participants$ = collectionData(
+    collection(
+      this.firestore,
+      Collections.ROOM,
+      this.roomId,
+      Collections.PARTICIPANT
+    )
+  ) as Observable<Participant[]>;
 
   ngOnInit(): void {
     this.userSignIn = this.user$.subscribe((user: User | null) => {

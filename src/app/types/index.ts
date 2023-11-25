@@ -1,2 +1,2 @@
 export { Collections } from "./collections";
-export { Room } from "./room";
+export { Room, Participant } from "./room";

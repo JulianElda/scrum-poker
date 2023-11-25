@@ -1,23 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Auth } from "@angular/fire/auth";
+import {
+  Spectator,
+  byLabel,
+  createComponentFactory,
+  mockProvider,
+} from "@ngneat/spectator/jest";
+import { FirebaseService } from "@scp/services/firebase.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { JoinRoomComponent } from "./join-room.component";
 
-import { JoinRoomComponent } from './join-room.component';
-
-describe('JoinRoomComponent', () => {
-  let component: JoinRoomComponent;
-  let fixture: ComponentFixture<JoinRoomComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [JoinRoomComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(JoinRoomComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+describe("JoinRoomComponent", () => {
+  let spectator: Spectator<JoinRoomComponent>;
+  const createComponent = createComponentFactory({
+    component: JoinRoomComponent,
+    providers: [
+      mockProvider(Auth),
+      mockProvider(FirebaseService),
+      mockProvider(ActivatedRoute),
+      mockProvider(Router),
+    ],
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it("shows name input field", () => {
+    spectator = createComponent();
+    expect(spectator.query(byLabel("Name"))).toBeTruthy();
   });
 });

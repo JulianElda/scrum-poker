@@ -8,6 +8,7 @@ import { Auth, signInAnonymously } from "@angular/fire/auth";
 import { Firestore, addDoc, collection } from "@angular/fire/firestore";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Collections } from "@scp/types";
+import { FirebaseService } from "@scp/services/firebase.service";
 
 @Component({
   selector: "scp-join-room",
@@ -31,41 +32,22 @@ import { Collections } from "@scp/types";
   `,
 })
 export class JoinRoomComponent {
-  private firestore = inject(Firestore);
   private auth = inject(Auth);
   private activatedRoute = inject(ActivatedRoute);
   private router = inject(Router);
-
-  private roomId = this.activatedRoute.snapshot.paramMap.get("id") || "";
+  private firebaseService = inject(FirebaseService);
 
   protected name = new FormControl("My name");
 
   protected async onJoinRoom() {
+    const roomId = this.activatedRoute.snapshot.paramMap.get("id") || "";
+
     const authUser = await signInAnonymously(this.auth);
-    await this.createRoomParticipant(
-      this.roomId,
+    await this.firebaseService.createRoomParticipant(
+      roomId,
       authUser.user.uid,
       this.name.value!
     );
-    this.router.navigate(["/room", { id: this.roomId }]);
-  }
-
-  private async createRoomParticipant(
-    roomId: string,
-    uid: string,
-    name: string
-  ) {
-    return addDoc(
-      collection(
-        this.firestore,
-        Collections.ROOM,
-        roomId,
-        Collections.PARTICIPANT
-      ),
-      {
-        name,
-        uid,
-      }
-    );
+    this.router.navigate(["/room", { id: roomId }]);
   }
 }
