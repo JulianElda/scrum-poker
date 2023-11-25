@@ -5,14 +5,18 @@ import {
   Timestamp,
   addDoc,
   collection,
+  collectionData,
 } from "@angular/fire/firestore";
-import { Collections, Room } from "@scp/types";
+import { ActivatedRoute } from "@angular/router";
+import { Collections, Participant, Room } from "@scp/types";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class FirebaseService {
   private firestore = inject(Firestore);
+  private activatedRoute = inject(ActivatedRoute);
 
   async createRoom(moderator: string): Promise<DocumentReference> {
     return addDoc(collection(this.firestore, Collections.ROOM), <Room>{
@@ -38,5 +42,16 @@ export class FirebaseService {
         uid,
       }
     );
+  }
+
+  getParticipants(roomId: string): Observable<Participant[]> {
+    return collectionData(
+      collection(
+        this.firestore,
+        Collections.ROOM,
+        roomId,
+        Collections.PARTICIPANT
+      )
+    ) as Observable<Participant[]>;
   }
 }
