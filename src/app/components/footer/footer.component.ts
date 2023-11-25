@@ -4,9 +4,9 @@ import { Component } from "@angular/core";
 
 @Component({
   selector: "scp-footer",
+  styleUrl: "./footer.component.css",
   standalone: true,
   imports: [CommonModule, HyperlinkComponent],
-  styleUrls: ["./footer.component.css"],
   template: `
     <div class="container mx-auto">
       <div class="flex justify-end">

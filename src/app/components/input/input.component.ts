@@ -4,9 +4,9 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
 
 @Component({
   selector: "scp-input",
+  styleUrl: "./input.component.css",
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  styleUrls: ["./input.component.css"],
   template: `
     <div class="my-2">
       <label

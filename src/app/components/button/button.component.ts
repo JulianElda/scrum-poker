@@ -3,9 +3,9 @@ import { CommonModule } from "@angular/common";
 
 @Component({
   selector: "scp-button",
+  styleUrl: "./button.component.css",
   standalone: true,
   imports: [CommonModule],
-  styleUrls: ["./button.component.css"],
   template: `
     <button
       type="button"
