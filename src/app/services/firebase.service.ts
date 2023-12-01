@@ -7,7 +7,6 @@ import {
   collection,
   collectionData,
 } from "@angular/fire/firestore";
-import { ActivatedRoute } from "@angular/router";
 import { Collections, Participant, Room } from "@scp/types";
 import { Observable } from "rxjs";
 
@@ -16,7 +15,6 @@ import { Observable } from "rxjs";
 })
 export class FirebaseService {
   private firestore = inject(Firestore);
-  private activatedRoute = inject(ActivatedRoute);
 
   async createRoom(moderator: string): Promise<DocumentReference> {
     return addDoc(collection(this.firestore, Collections.ROOM), <Room>{
