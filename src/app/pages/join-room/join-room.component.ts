@@ -1,13 +1,11 @@
-import { Component, inject } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { Component, inject } from "@angular/core";
+import { Auth, signInAnonymously } from "@angular/fire/auth";
+import { FormControl } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ButtonComponent } from "@scp/components/button/button.component";
 import { CardLayoutComponent } from "@scp/components/card-layout/card-layout.component";
 import { InputComponent } from "@scp/components/input/input.component";
-import { ButtonComponent } from "@scp/components/button/button.component";
-import { FormControl } from "@angular/forms";
-import { Auth, signInAnonymously } from "@angular/fire/auth";
-import { Firestore, addDoc, collection } from "@angular/fire/firestore";
-import { ActivatedRoute, Router } from "@angular/router";
-import { Collections } from "@scp/types";
 import { FirebaseService } from "@scp/services/firebase.service";
 
 @Component({

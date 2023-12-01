@@ -1,15 +1,10 @@
 import { inject } from "@angular/core";
 import { Firestore, doc, getDoc } from "@angular/fire/firestore";
-import {
-  ActivatedRouteSnapshot,
-  CanActivateFn,
-  RouterStateSnapshot,
-} from "@angular/router";
+import { ActivatedRouteSnapshot, CanActivateFn } from "@angular/router";
 import { Collections } from "@scp/types";
 
 export const gameRoomCanActivate: CanActivateFn = async (
-  route: ActivatedRouteSnapshot,
-  _state: RouterStateSnapshot
+  route: ActivatedRouteSnapshot
 ): Promise<boolean> => {
   const firestore = inject(Firestore);
 
