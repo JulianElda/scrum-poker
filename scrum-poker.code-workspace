@@ -19,6 +19,7 @@
   },
   "extensions": {
     "recommendations": [
+      "nrwl.angular-console",
       "bradlc.vscode-tailwindcss",
       "deque-systems.vscode-axe-linter",
       "dbaeumer.vscode-eslint",
