@@ -6,7 +6,7 @@
 }
 
 :host.selected {
-  @apply border-4 border-sky-500;
+  @apply border-4 border-sky-400;
 }
 
 .card-content {
