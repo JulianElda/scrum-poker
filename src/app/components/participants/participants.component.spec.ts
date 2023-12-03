@@ -1,21 +1,33 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import {
+  Spectator,
+  byText,
+  createComponentFactory,
+} from "@ngneat/spectator/jest";
 import { ParticipantsComponent } from "./participants.component";
+import { signal } from "@angular/core";
 
 describe("ParticipantsComponent", () => {
-  let component: ParticipantsComponent;
-  let fixture: ComponentFixture<ParticipantsComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ParticipantsComponent],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(ParticipantsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  let spectator: Spectator<ParticipantsComponent>;
+  const createComponent = createComponentFactory({
+    component: ParticipantsComponent,
   });
 
-  it("should create", () => {
-    expect(component).toBeTruthy();
+  test("shows participants names", () => {
+    spectator = createComponent({
+      props: {
+        participants: signal([
+          {
+            name: "Donald",
+            voted: true,
+          },
+          {
+            name: "Joe",
+            voted: false,
+          },
+        ]),
+      },
+    });
+    expect(spectator.query(byText("Donald"))).toBeTruthy();
+    expect(spectator.query(byText("Joe"))).toBeTruthy();
   });
 });
