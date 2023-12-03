@@ -11,7 +11,7 @@ describe("HeaderComponent", () => {
     component: HeaderComponent,
   });
 
-  it("shows title", () => {
+  test("shows title", () => {
     spectator = createComponent();
     expect(spectator.query(byText("Planning Poker"))).toBeTruthy();
   });

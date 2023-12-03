@@ -22,7 +22,7 @@ describe("GameRoomComponent", () => {
   });
   */
 
-  it("should create", () => {
+  test("should create", () => {
     expect(true).toBeTruthy();
   });
 });

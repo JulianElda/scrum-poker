@@ -15,7 +15,7 @@ describe("InputComponent", () => {
     component: InputComponent,
   });
 
-  it("shows input and label elements", () => {
+  test("shows input and label elements", () => {
     spectator = createComponent({
       props: {
         id: "input-id",

@@ -1,21 +1,21 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import {
+  Spectator,
+  byText,
+  createComponentFactory,
+} from "@ngneat/spectator/jest";
 import { CardListComponent } from "./card-list.component";
 
 describe("CardListComponent", () => {
-  let component: CardListComponent;
-  let fixture: ComponentFixture<CardListComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [CardListComponent],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(CardListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  let spectator: Spectator<CardListComponent>;
+  const createComponent = createComponentFactory({
+    component: CardListComponent,
   });
 
-  it("should create", () => {
-    expect(component).toBeTruthy();
+  test("shows card texts", () => {
+    spectator = createComponent();
+
+    ["1", "2", "3", "5", "8", "13", "20", "?"].forEach((text) => {
+      expect(spectator.query(byText(text)));
+    });
   });
 });

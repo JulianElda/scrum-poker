@@ -13,7 +13,7 @@ describe("FirebaseService", () => {
     providers: [mockProvider(Firestore)],
   });
 
-  it("should be created", () => {
+  test("should be created", () => {
     spectator = createService();
     expect(spectator).toBeTruthy();
   });

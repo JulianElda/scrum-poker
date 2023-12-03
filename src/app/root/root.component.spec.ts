@@ -12,7 +12,7 @@ describe("RootComponent", () => {
     component: RootComponent,
   });
 
-  it("shows title and footer", () => {
+  test("shows title and footer", () => {
     spectator = createComponent();
     expect(spectator.query(byTestId("footer-link"))).toBeTruthy();
     expect(spectator.query(byText("Planning Poker"))).toBeTruthy();

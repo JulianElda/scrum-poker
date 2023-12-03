@@ -21,7 +21,7 @@ describe("JoinRoomComponent", () => {
     ],
   });
 
-  it("shows name input field", () => {
+  test("shows name input field", () => {
     spectator = createComponent();
     expect(spectator.query(byLabel("Name"))).toBeTruthy();
   });

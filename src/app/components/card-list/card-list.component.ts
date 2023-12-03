@@ -1,48 +1,24 @@
-import { CommonModule } from "@angular/common";
-import { Component } from "@angular/core";
+import { Component, signal } from "@angular/core";
 import { CardComponent } from "@scp/components/card/card.component";
-import { Card } from "@scp/types";
 
 @Component({
   selector: "scp-card-list",
   standalone: true,
-  imports: [CommonModule, CardComponent],
+  imports: [CardComponent],
   styleUrl: "./card-list.component.css",
   template: `
-    <ng-container *ngFor="let card of cards">
-      <scp-card [text]="card.display" />
-    </ng-container>
+    <scp-card
+      *ngFor="let card of cards()"
+      [text]="card"
+      [selected]="card === selectedCard()"
+      (click)="selectCard(card)" />
   `,
 })
 export class CardListComponent {
-  protected cards: Card[] = [
-    {
-      display: "1",
-      selected: false,
-    },
-    {
-      display: "2",
-      selected: false,
-    },
-    {
-      display: "3",
-      selected: false,
-    },
-    {
-      display: "5",
-      selected: false,
-    },
-    {
-      display: "8",
-      selected: false,
-    },
-    {
-      display: "13",
-      selected: false,
-    },
-    {
-      display: "20",
-      selected: false,
-    },
-  ];
+  protected cards = signal(["1", "2", "3", "5", "8", "13", "20", "?"]);
+  protected selectedCard = signal("");
+
+  protected selectCard(card: string) {
+    this.selectedCard.set(card);
+  }
 }

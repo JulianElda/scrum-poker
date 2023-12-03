@@ -11,7 +11,7 @@ describe("ButtonComponent", () => {
     component: ButtonComponent,
   });
 
-  it("shows text", () => {
+  test("shows text", () => {
     spectator = createComponent({
       props: {
         text: "Button text",

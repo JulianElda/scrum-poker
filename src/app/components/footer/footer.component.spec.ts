@@ -11,7 +11,7 @@ describe("FooterComponent", () => {
     component: FooterComponent,
   });
 
-  it("shows text", () => {
+  test("shows text", () => {
     spectator = createComponent();
     const hyperlinkElement = spectator.query(byTestId("footer-link"));
     expect(hyperlinkElement).toHaveAttribute(

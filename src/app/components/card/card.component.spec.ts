@@ -11,7 +11,7 @@ describe("CardComponent", () => {
     component: CardComponent,
   });
 
-  it("shows text", () => {
+  test("shows text", () => {
     spectator = createComponent({
       props: {
         text: "13",

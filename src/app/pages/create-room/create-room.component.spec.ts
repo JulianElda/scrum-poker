@@ -20,7 +20,7 @@ describe("CreateRoomComponent", () => {
     ],
   });
 
-  it("shows name input field", () => {
+  test("shows name input field", () => {
     spectator = createComponent();
     expect(spectator.query(byLabel("Moderator name"))).toBeTruthy();
   });

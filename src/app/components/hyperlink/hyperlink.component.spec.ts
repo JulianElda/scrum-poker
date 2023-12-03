@@ -11,7 +11,7 @@ describe("HyperlinkComponent", () => {
     component: HyperlinkComponent,
   });
 
-  it("creates hyperlink", () => {
+  test("creates hyperlink", () => {
     spectator = createComponent({
       props: {
         link: "https://github.com/JulianElda",
