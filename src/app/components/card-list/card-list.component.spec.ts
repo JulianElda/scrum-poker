@@ -1,8 +1,10 @@
+import { signal } from "@angular/core";
 import {
   Spectator,
   byText,
   createComponentFactory,
 } from "@ngneat/spectator/jest";
+import { FIBONACCI } from "@scp/types";
 import { CardListComponent } from "./card-list.component";
 
 describe("CardListComponent", () => {
@@ -12,10 +14,14 @@ describe("CardListComponent", () => {
   });
 
   test("shows card texts", () => {
-    spectator = createComponent();
+    spectator = createComponent({
+      props: {
+        cards: signal(FIBONACCI),
+      },
+    });
 
-    ["1", "2", "3", "5", "8", "13", "20", "?"].forEach((text) => {
-      expect(spectator.query(byText(text)));
+    [...FIBONACCI].forEach((text) => {
+      expect(spectator.query(byText(text))).toBeTruthy();
     });
   });
 });
