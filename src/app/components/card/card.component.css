@@ -1,5 +1,5 @@
 :host {
-  @apply flex h-[200px] w-[120px] cursor-pointer
+  @apply flex h-[200px] w-[125px] cursor-pointer
     flex-col rounded-lg border border-solid
     border-gray-300
     bg-white p-2;

@@ -1,11 +1,9 @@
-import { NgClass } from "@angular/common";
 import { Component, HostBinding, Input } from "@angular/core";
 
 @Component({
   selector: "scp-card",
   standalone: true,
-  imports: [NgClass],
-  styleUrls: ["./card.component.css"],
+  styleUrl: "./card.component.css",
   template: `
     <div class="card-content">
       <span>{{ text }}</span>

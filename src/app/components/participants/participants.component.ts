@@ -1,12 +1,12 @@
-import { CommonModule } from "@angular/common";
+import { NgForOf } from "@angular/common";
 import { Component, Input, signal } from "@angular/core";
 import { CardLayoutComponent } from "@scp/components/card-layout/card-layout.component";
-import { ParticipantsVotes } from "src/app/types/participant";
+import { ParticipantsHasVoted } from "src/app/types/participant";
 
 @Component({
   selector: "scp-participants",
   standalone: true,
-  imports: [CommonModule, CardLayoutComponent],
+  imports: [NgForOf, CardLayoutComponent],
   styleUrl: "./participants.component.css",
   template: `
     <div class="mx-auto my-6 max-w-xs">
@@ -27,6 +27,6 @@ import { ParticipantsVotes } from "src/app/types/participant";
 })
 export class ParticipantsComponent {
   @Input({ required: true }) participants = signal<
-    ParticipantsVotes[] | undefined
+    ParticipantsHasVoted[] | undefined
   >(undefined);
 }

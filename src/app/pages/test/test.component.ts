@@ -1,13 +1,17 @@
 import { Component, signal } from "@angular/core";
 import { CardListComponent } from "@scp/components/card-list/card-list.component";
 import { ParticipantsComponent } from "@scp/components/participants/participants.component";
+import { ResultComponent } from "@scp/components/result/result.component";
 import { FIBONACCI } from "@scp/types";
-import { ParticipantsVotes } from "src/app/types/participant";
+import {
+  ParticipantsHasVoted,
+  ParticipantsVote,
+} from "src/app/types/participant";
 
 @Component({
   selector: "scp-test",
   standalone: true,
-  imports: [CardListComponent, ParticipantsComponent],
+  imports: [CardListComponent, ParticipantsComponent, ResultComponent],
   styleUrl: "./test.component.css",
   template: `
     <div class="mx-auto max-w-3xl">
@@ -17,6 +21,7 @@ import { ParticipantsVotes } from "src/app/types/participant";
           (selectCard)="setSelected($event)" />
       </div>
       <scp-participants [participants]="participants" />
+      <scp-result [participantsVotes]="participantVotes" />
     </div>
   `,
 })
@@ -24,7 +29,7 @@ export class TestComponent {
   sequence = signal(FIBONACCI);
   selectedCard = signal("");
 
-  participants = signal<ParticipantsVotes[]>([
+  participants = signal<ParticipantsHasVoted[]>([
     {
       name: "Donald",
       voted: true,
@@ -35,7 +40,26 @@ export class TestComponent {
     },
     {
       name: "Obama",
+      voted: true,
+    },
+    {
+      name: "Bush",
       voted: false,
+    },
+  ]);
+
+  participantVotes = signal<ParticipantsVote[]>([
+    {
+      name: "Donald",
+      vote: "20",
+    },
+    {
+      name: "Joe",
+      vote: "8",
+    },
+    {
+      name: "Obama",
+      vote: "13",
     },
   ]);
 
