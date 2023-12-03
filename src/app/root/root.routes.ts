@@ -3,6 +3,11 @@ import { gameRoomCanActivate } from "@scp/pages/game-room/game-room.resolver";
 
 export const rootRoutes: Route[] = [
   {
+    path: "test",
+    loadComponent: () =>
+      import("./../pages/test/test.component").then((m) => m.TestComponent),
+  },
+  {
     path: "new",
     loadComponent: () =>
       import("./../pages/create-room/create-room.component").then(
