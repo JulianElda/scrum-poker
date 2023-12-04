@@ -1,10 +1,10 @@
-import { CommonModule } from "@angular/common";
+import { NgClass } from "@angular/common";
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
   selector: "scp-button",
   standalone: true,
-  imports: [CommonModule],
+  imports: [NgClass],
   styleUrl: "./button.component.css",
   template: `
     <button
@@ -25,7 +25,7 @@ export class ButtonComponent {
 
   @Output() clickButton = new EventEmitter();
 
-  onButtonClick() {
+  protected onButtonClick() {
     this.clickButton.emit();
   }
 }

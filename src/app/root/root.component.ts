@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 import { FooterComponent } from "@scp/components/footer/footer.component";
 import { HeaderComponent } from "@scp/components/header/header.component";
@@ -16,4 +16,9 @@ import { HeaderComponent } from "@scp/components/header/header.component";
     <scp-footer />
   `,
 })
-export class RootComponent {}
+export class RootComponent implements OnInit {
+  ngOnInit() {
+    if (localStorage["theme"] === "dark")
+      document.documentElement.classList.add("dark");
+  }
+}

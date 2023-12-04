@@ -1,4 +1,4 @@
-import { CommonModule } from "@angular/common";
+import { NgForOf } from "@angular/common";
 import { Component, Input, signal } from "@angular/core";
 import { CardComponent } from "@scp/components/card/card.component";
 import { ParticipantsVote } from "@scp/types";
@@ -6,7 +6,7 @@ import { ParticipantsVote } from "@scp/types";
 @Component({
   selector: "scp-result",
   standalone: true,
-  imports: [CommonModule, CardComponent],
+  imports: [NgForOf, CardComponent],
   styleUrl: "./result.component.css",
   template: `
     <div class="mx-auto max-w-xl">

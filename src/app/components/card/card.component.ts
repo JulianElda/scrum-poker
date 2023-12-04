@@ -9,9 +9,9 @@ import { Component, Input } from "@angular/core";
 
   template: `
     <div
-      class="card-container"
+      class="container"
       [ngClass]="{ selected: selected }">
-      <div class="card-content">
+      <div class="content">
         <span>{{ text }}</span>
       </div>
     </div>

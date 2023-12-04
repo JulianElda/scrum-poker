@@ -1,10 +1,10 @@
+import { signal } from "@angular/core";
 import {
   Spectator,
   byText,
   createComponentFactory,
 } from "@ngneat/spectator/jest";
 import { ResultComponent } from "./result.component";
-import { signal } from "@angular/core";
 
 describe("ResultComponent", () => {
   let spectator: Spectator<ResultComponent>;

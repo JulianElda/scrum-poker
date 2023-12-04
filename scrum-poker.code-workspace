@@ -11,6 +11,7 @@
     },
     "files.exclude": {
       ".npm": true,
+      ".nx": true,
       ".angular": true,
       "build": true,
       "coverage": true,

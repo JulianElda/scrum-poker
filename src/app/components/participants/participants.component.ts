@@ -6,7 +6,7 @@ import {
   faCircleXmark,
 } from "@fortawesome/free-regular-svg-icons";
 import { CardLayoutComponent } from "@scp/components/card-layout/card-layout.component";
-import { ParticipantsHasVoted } from "src/app/types/participant";
+import { ParticipantsHasVoted } from "@scp/types";
 
 @Component({
   selector: "scp-participants",
