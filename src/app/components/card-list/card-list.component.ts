@@ -1,6 +1,7 @@
 import { NgForOf } from "@angular/common";
 import { Component, EventEmitter, Input, Output, signal } from "@angular/core";
 import { CardComponent } from "@scp/components/card/card.component";
+import { FIBONACCI } from "@scp/types";
 
 @Component({
   selector: "scp-card-list",
@@ -16,7 +17,7 @@ import { CardComponent } from "@scp/components/card/card.component";
   `,
 })
 export class CardListComponent {
-  @Input({ required: true }) cards = signal([""]);
+  @Input({ required: true }) cards = signal(FIBONACCI);
   @Output() selectCard = new EventEmitter<string>();
 
   protected selectedCard = signal("");

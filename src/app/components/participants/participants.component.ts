@@ -1,12 +1,17 @@
 import { NgForOf } from "@angular/common";
 import { Component, Input, signal } from "@angular/core";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import {
+  faCircleCheck,
+  faCircleXmark,
+} from "@fortawesome/free-regular-svg-icons";
 import { CardLayoutComponent } from "@scp/components/card-layout/card-layout.component";
 import { ParticipantsHasVoted } from "src/app/types/participant";
 
 @Component({
   selector: "scp-participants",
   standalone: true,
-  imports: [NgForOf, CardLayoutComponent],
+  imports: [NgForOf, FontAwesomeModule, CardLayoutComponent],
   styleUrl: "./participants.component.css",
   template: `
     <div class="mx-auto my-6 max-w-xs">
@@ -15,9 +20,13 @@ import { ParticipantsHasVoted } from "src/app/types/participant";
           class="my-2 text-xl"
           *ngFor="let participant of participants()">
           @if (participant.voted) {
-            <span class="text-green-400">&#x2714;</span>
+            <fa-icon
+              class="h-4 w-4 text-green-400"
+              [icon]="icons.voted" />
           } @else {
-            <span class="text-red-400">&#x2717;</span>
+            <fa-icon
+              class="h-4 w-4 text-red-400"
+              [icon]="icons.pending" />
           }
           <span class="mx-2">{{ participant.name }}</span>
         </div>
@@ -29,4 +38,9 @@ export class ParticipantsComponent {
   @Input({ required: true }) participants = signal<
     ParticipantsHasVoted[] | undefined
   >(undefined);
+
+  protected icons = {
+    voted: faCircleCheck,
+    pending: faCircleXmark,
+  };
 }

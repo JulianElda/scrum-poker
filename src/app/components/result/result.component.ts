@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, Input, computed, signal } from "@angular/core";
+import { Component, Input, signal } from "@angular/core";
 import { CardComponent } from "@scp/components/card/card.component";
 import { ParticipantsVote } from "@scp/types";
 
@@ -11,7 +11,7 @@ import { ParticipantsVote } from "@scp/types";
   template: `
     <div class="mx-auto max-w-xl">
       <div class="grid grid-cols-4 place-content-evenly gap-4">
-        <div *ngFor="let participantsVote of sortedVotes()">
+        <div *ngFor="let participantsVote of participantsVotes()">
           <scp-card [text]="participantsVote.vote" />
           <div class="my-2 text-center text-xl">
             {{ participantsVote.name }}
@@ -25,11 +25,4 @@ export class ResultComponent {
   @Input({ required: true }) participantsVotes = signal<
     ParticipantsVote[] | undefined
   >(undefined);
-
-  sortedVotes = computed(
-    () =>
-      this.participantsVotes()
-        ?.slice()
-        .sort((a, b) => b.vote.localeCompare(a.vote))
-  );
 }
