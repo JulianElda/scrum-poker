@@ -1,5 +1,5 @@
 .label {
-  @apply block text-sm font-semibold leading-4 text-gray-800;
+  @apply block font-semibold leading-4 text-gray-800 dark:text-gray-100;
 }
 
 .input {
@@ -10,5 +10,5 @@
     focus:border-sky-300
     focus:ring-1 focus:ring-inset
     focus:ring-sky-300
-    sm:text-sm sm:leading-6;
+    sm:leading-6;
 }

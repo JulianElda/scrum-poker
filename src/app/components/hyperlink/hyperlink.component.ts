@@ -9,7 +9,7 @@ import { Component, Input } from "@angular/core";
       target="_blank"
       rel="noreferrer"
       [attr.data-testid]="testId"
-      class="text-sky-950 decoration-dotted hover:text-sky-800 hover:underline">
+      class="text-sky-950 decoration-dotted hover:text-sky-800 hover:underline dark:text-sky-100">
       {{ text }}*
     </a>
   `,

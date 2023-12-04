@@ -1,14 +1,13 @@
-:host {
+.card-container {
   @apply flex h-[200px] w-[125px] cursor-pointer
     flex-col rounded-lg border border-solid
-    border-gray-300
-    bg-white p-2;
+    border-gray-300 bg-white p-2 dark:bg-slate-800;
 }
 
-:host.selected {
+.selected {
   @apply border-4 border-sky-400;
 }
 
 .card-content {
-  @apply grid flex-1 grid-cols-1 place-content-center text-center text-3xl;
+  @apply grid flex-1 grid-cols-1 place-content-center text-center text-3xl dark:text-gray-50;
 }

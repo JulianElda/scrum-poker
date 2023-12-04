@@ -1,19 +1,24 @@
-import { Component, HostBinding, Input } from "@angular/core";
+import { NgClass } from "@angular/common";
+import { Component, Input } from "@angular/core";
 
 @Component({
   selector: "scp-card",
   standalone: true,
+  imports: [NgClass],
   styleUrl: "./card.component.css",
+
   template: `
-    <div class="card-content">
-      <span>{{ text }}</span>
+    <div
+      class="card-container"
+      [ngClass]="{ selected: selected }">
+      <div class="card-content">
+        <span>{{ text }}</span>
+      </div>
     </div>
   `,
 })
 export class CardComponent {
   @Input({ required: true }) text = "";
 
-  @HostBinding("class.selected")
-  @Input()
-  selected = false;
+  @Input() selected = false;
 }

@@ -1,24 +1,24 @@
-html {
-  --grid-color: 200;
+body {
+  --grid-color: 150;
   background-size: 1.75rem 1.75rem;
   background-image: linear-gradient(
       to right,
-      rgba(var(--grid-color), var(--grid-color), var(--grid-color), 0.05) 1px,
+      rgba(var(--grid-color), var(--grid-color), var(--grid-color), 0.03) 1px,
       transparent 1px
     ),
     linear-gradient(
       to bottom,
-      rgba(var(--grid-color), var(--grid-color), var(--grid-color), 0.05) 1px,
+      rgba(var(--grid-color), var(--grid-color), var(--grid-color), 0.03) 1px,
       transparent 1px
     ),
     linear-gradient(
       to top,
-      rgba(var(--grid-color), var(--grid-color), var(--grid-color), 0.05) 1px,
+      rgba(var(--grid-color), var(--grid-color), var(--grid-color), 0.03) 1px,
       transparent 1px
     ),
     linear-gradient(
       to left,
-      rgba(var(--grid-color), var(--grid-color), var(--grid-color), 0.05) 1px,
+      rgba(var(--grid-color), var(--grid-color), var(--grid-color), 0.03) 1px,
       transparent 1px
     );
 }

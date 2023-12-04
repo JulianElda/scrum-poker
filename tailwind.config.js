@@ -3,10 +3,10 @@
 module.exports = {
   content: ["./src/**/*.{html,ts}", "./src/index.html"],
   theme: {
-    extend: {},
     fontFamily: {
       serif: "'Alegreya'",
     },
   },
+  darkMode: "class",
   plugins: [],
 };
