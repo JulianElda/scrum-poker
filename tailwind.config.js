@@ -5,8 +5,7 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      mono: "'M PLUS 1 Code'",
-      sans: "'M PLUS 1'",
+      serif: "'Alegreya'",
     },
   },
   plugins: [],
