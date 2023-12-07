@@ -6,7 +6,6 @@ import { Component, Input } from "@angular/core";
   standalone: true,
   imports: [NgClass],
   styleUrl: "./card.component.css",
-
   template: `
     <div
       class="container"

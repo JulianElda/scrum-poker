@@ -1,5 +1,5 @@
 import { NgForOf } from "@angular/common";
-import { Component, EventEmitter, Input, Output, signal } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { CardComponent } from "@scp/components/card/card.component";
 import { FIBONACCI } from "@scp/types";
 
@@ -10,20 +10,20 @@ import { FIBONACCI } from "@scp/types";
   styleUrl: "./card-list.component.css",
   template: `
     <scp-card
-      *ngFor="let card of cards()"
+      *ngFor="let card of cards"
       [text]="card"
-      [selected]="card === selectedCard()"
+      [selected]="card === selectedCard"
       (click)="clickCard(card)" />
   `,
 })
 export class CardListComponent {
-  @Input({ required: true }) cards = signal(FIBONACCI);
+  @Input({ required: true }) cards = FIBONACCI;
   @Output() selectCard = new EventEmitter<string>();
 
-  protected selectedCard = signal("");
+  protected selectedCard = "";
 
   protected clickCard(card: string) {
-    this.selectedCard.set(card);
+    this.selectedCard = card;
     this.selectCard.emit(card);
   }
 }

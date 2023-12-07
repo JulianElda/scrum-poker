@@ -1,5 +1,5 @@
 import { NgForOf } from "@angular/common";
-import { Component, Input, signal } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import {
   faCircleCheck,
@@ -18,7 +18,7 @@ import { ParticipantsHasVoted } from "@scp/types";
       <scp-card-layout>
         <div
           class="my-2 text-xl"
-          *ngFor="let participant of participants()">
+          *ngFor="let participant of participants">
           @if (participant.voted) {
             <fa-icon
               class="h-4 w-4 text-green-400"
@@ -35,9 +35,7 @@ import { ParticipantsHasVoted } from "@scp/types";
   `,
 })
 export class ParticipantsComponent {
-  @Input({ required: true }) participants = signal<
-    ParticipantsHasVoted[] | undefined
-  >(undefined);
+  @Input({ required: true }) participants: ParticipantsHasVoted[] | null = null;
 
   protected icons = {
     voted: faCircleCheck,

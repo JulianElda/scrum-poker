@@ -26,10 +26,10 @@ import {
   `,
 })
 export class TestComponent {
-  sequence = signal(FIBONACCI);
+  sequence = FIBONACCI;
   selectedCard = signal("");
 
-  participants = signal<ParticipantsHasVoted[]>([
+  participants: ParticipantsHasVoted[] = [
     {
       name: "Donald",
       voted: true,
@@ -46,7 +46,7 @@ export class TestComponent {
       name: "Bush",
       voted: false,
     },
-  ]);
+  ];
 
   participantVotes = signal<ParticipantsVote[]>([
     {
