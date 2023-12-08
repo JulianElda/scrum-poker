@@ -4,8 +4,12 @@ import {
   Firestore,
   Timestamp,
   addDoc,
+  updateDoc,
   collection,
   collectionData,
+  doc,
+  getDoc,
+  DocumentSnapshot,
 } from "@angular/fire/firestore";
 import { Collections, Participant, Room } from "@scp/types";
 import { Observable } from "rxjs";
@@ -51,5 +55,37 @@ export class FirebaseService {
         Collections.PARTICIPANT
       )
     ) as Observable<Participant[]>;
+  }
+
+  getParticipant(
+    roomId: string,
+    participantId: string
+  ): Promise<DocumentSnapshot> {
+    return getDoc(
+      doc(
+        this.firestore,
+        Collections.ROOM,
+        roomId,
+        Collections.PARTICIPANT,
+        participantId
+      )
+    );
+  }
+
+  updateParticipantVote(
+    roomId: string,
+    participantId: string,
+    data: Participant
+  ) {
+    return updateDoc(
+      doc(
+        this.firestore,
+        Collections.ROOM,
+        roomId,
+        Collections.PARTICIPANT,
+        participantId
+      ),
+      { ...data }
+    );
   }
 }

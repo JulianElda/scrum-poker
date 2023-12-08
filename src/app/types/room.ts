@@ -8,4 +8,5 @@ export interface Room {
 export interface Participant {
   name: string;
   uid: string;
+  vote?: string;
 }

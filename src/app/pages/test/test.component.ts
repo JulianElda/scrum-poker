@@ -48,7 +48,7 @@ export class TestComponent {
     },
   ];
 
-  participantVotes = signal<ParticipantsVote[]>([
+  participantVotes: ParticipantsVote[] = [
     {
       name: "Donald",
       vote: "20",
@@ -61,7 +61,7 @@ export class TestComponent {
       name: "Obama",
       vote: "13",
     },
-  ]);
+  ];
 
   setSelected(value: string) {
     this.selectedCard.set(value);

@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 import { ButtonComponent } from "@scp/components/button/button.component";
 import { CardLayoutComponent } from "@scp/components/card-layout/card-layout.component";
 import { InputComponent } from "@scp/components/input/input.component";
+import { AuthService } from "@scp/services/auth.service";
 import { FirebaseService } from "@scp/services/firebase.service";
 
 @Component({
@@ -32,12 +33,14 @@ import { FirebaseService } from "@scp/services/firebase.service";
 export class CreateRoomComponent {
   private auth = inject(Auth);
   private router = inject(Router);
+  private authService = inject(AuthService);
   private firebaseService = inject(FirebaseService);
 
   protected moderatorName = new FormControl("My name");
 
   protected async onCreateRoom() {
     const authUser = await signInAnonymously(this.auth);
+    this.authService.uid = authUser.user.uid;
     const newRoom = await this.firebaseService.createRoom(authUser.user.uid);
     await this.firebaseService.createRoomParticipant(
       newRoom.id,
