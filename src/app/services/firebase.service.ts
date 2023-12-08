@@ -7,9 +7,9 @@ import {
   updateDoc,
   collection,
   collectionData,
-  doc,
   query,
   where,
+  getDocs,
 } from "@angular/fire/firestore";
 import { Collections, Participant, Room } from "@scp/types";
 import { Observable } from "rxjs";
@@ -20,11 +20,18 @@ import { Observable } from "rxjs";
 export class FirebaseService {
   private firestore = inject(Firestore);
 
+  private currentRoomRef: DocumentReference | null = null;
+  private currentParticipantRef: DocumentReference | null = null;
+
   async createRoom(moderator: string): Promise<DocumentReference> {
-    return addDoc(collection(this.firestore, Collections.ROOM), <Room>{
-      date: Timestamp.fromDate(new Date()),
-      moderator,
-    });
+    this.currentRoomRef = await addDoc(
+      collection(this.firestore, Collections.ROOM),
+      <Room>{
+        date: Timestamp.fromDate(new Date()),
+        moderator,
+      }
+    );
+    return this.currentRoomRef;
   }
 
   async createRoomParticipant(
@@ -32,7 +39,7 @@ export class FirebaseService {
     uid: string,
     name: string
   ): Promise<DocumentReference> {
-    return addDoc(
+    this.currentParticipantRef = await addDoc(
       collection(
         this.firestore,
         Collections.ROOM,
@@ -44,6 +51,7 @@ export class FirebaseService {
         uid,
       }
     );
+    return this.currentParticipantRef;
   }
 
   getParticipants(roomId: string): Observable<Participant[]> {
@@ -58,7 +66,7 @@ export class FirebaseService {
   }
 
   getParticipant(roomId: string, sessionId: string) {
-    const result = collectionData(
+    const result = getDocs(
       query(
         collection(
           this.firestore,
@@ -73,20 +81,7 @@ export class FirebaseService {
     return result;
   }
 
-  updateParticipantVote(
-    roomId: string,
-    participantId: string,
-    data: Participant
-  ) {
-    return updateDoc(
-      doc(
-        this.firestore,
-        Collections.ROOM,
-        roomId,
-        Collections.PARTICIPANT,
-        participantId
-      ),
-      { ...data }
-    );
+  updateParticipantVote(data: Participant) {
+    return updateDoc(this.currentParticipantRef!, { ...data });
   }
 }

@@ -47,13 +47,13 @@ export class SessionCheckComponent implements OnInit, OnDestroy {
     this.activatedRoute.params.pipe(map((param) => param["id"])),
   ]).pipe(
     concatMap(([sessionId, roomId]) => {
-      return this.firebaseService.getParticipant(roomId, sessionId).pipe(
-        tap((result) => {
-          const participant = result[0];
+      return this.firebaseService
+        .getParticipant(roomId, sessionId)
+        .then((result: any) => {
+          const participant = result?.docs?.[0]?.data();
           this.authService.participantName$.next(participant["name"]);
-          this.authService.participantId$.next(participant["id"]);
-        })
-      );
+          this.authService.sessionId$.next(participant["uid"]);
+        });
     })
   );
 

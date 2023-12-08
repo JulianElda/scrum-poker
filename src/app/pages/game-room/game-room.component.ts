@@ -49,21 +49,17 @@ export class GameRoomComponent {
       map((participants) =>
         participants.map((participant) => ({
           name: participant.name,
-          voted: true,
+          voted: participant.vote !== "",
         }))
       )
     );
 
   protected onSelectCard(card: string) {
-    this.firebaseService.updateParticipantVote(
-      this.roomId,
-      this.authService.participantId,
-      {
-        name: this.authService.participantName,
-        uid: this.authService.sessionId,
-        vote: card,
-      }
-    );
+    this.firebaseService.updateParticipantVote({
+      name: this.authService.participantName,
+      uid: this.authService.sessionId,
+      vote: card,
+    });
   }
 
   test() {
@@ -72,12 +68,9 @@ export class GameRoomComponent {
         this.activatedRoute.snapshot.paramMap.get("id") || "",
         this.authService.sessionId
       )
-      .pipe(
-        map((result) => {
-          console.log("currentParticipant", result);
-          return result;
-        })
-      )
-      .subscribe();
+      .then((result) => {
+        console.log("currentParticipant", result);
+        return result;
+      });
   }
 }
