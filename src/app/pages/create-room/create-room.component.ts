@@ -40,13 +40,17 @@ export class CreateRoomComponent {
 
   protected async onCreateRoom() {
     const authUser = await signInAnonymously(this.auth);
-    this.authService.uid = authUser.user.uid;
+
     const newRoom = await this.firebaseService.createRoom(authUser.user.uid);
-    await this.firebaseService.createRoomParticipant(
+    const participant = await this.firebaseService.createRoomParticipant(
       newRoom.id,
       authUser.user.uid,
       this.moderatorName.value!
     );
+
+    this.authService.sessionId = authUser.user.uid;
+    this.authService.participantId = participant.id;
+    this.authService.participantName = this.moderatorName.value!;
     this.router.navigate(["/room", { id: newRoom.id }]);
   }
 }

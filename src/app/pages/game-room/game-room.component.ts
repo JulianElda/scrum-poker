@@ -7,7 +7,7 @@ import { ResultComponent } from "@scp/components/result/result.component";
 import { SessionCheckComponent } from "@scp/components/session-check/session-check.component";
 import { AuthService } from "@scp/services/auth.service";
 import { FirebaseService } from "@scp/services/firebase.service";
-import { FIBONACCI, ParticipantsHasVoted } from "@scp/types";
+import { FIBONACCI, Participant, ParticipantsHasVoted } from "@scp/types";
 import { Observable, map } from "rxjs";
 
 @Component({
@@ -25,9 +25,12 @@ import { Observable, map } from "rxjs";
     <scp-session-check>
       <div class="mx-auto max-w-3xl">
         <div class="mx-auto max-w-2xl">
-          <scp-card-list [cards]="cards" />
+          <scp-card-list
+            [cards]="cards"
+            (selectCard)="onSelectCard($event)" />
           <scp-participants [participants]="participants$ | async" />
           <scp-result [participantsVotes]="" />
+          <button (click)="test()">test</button>
         </div>
       </div>
     </scp-session-check>
@@ -50,4 +53,45 @@ export class GameRoomComponent {
         }))
       )
     );
+
+  /*
+  protected currentParticipant$: Observable<unknown> = this.firebaseService
+    .getParticipant(
+      this.activatedRoute.snapshot.paramMap.get("id") || "",
+      this.authService.sessionId
+    )
+    .pipe(
+      map((result) => {
+        console.log("currentParticipant", result);
+        return result;
+      })
+    );
+    */
+
+  protected onSelectCard(card: string) {
+    this.firebaseService.updateParticipantVote(
+      this.roomId,
+      this.authService.participantId,
+      {
+        name: this.authService.participantName,
+        uid: this.authService.sessionId,
+        vote: card,
+      }
+    );
+  }
+
+  test() {
+    this.firebaseService
+      .getParticipant(
+        this.activatedRoute.snapshot.paramMap.get("id") || "",
+        this.authService.sessionId
+      )
+      .pipe(
+        map((result) => {
+          console.log("currentParticipant", result);
+          return result;
+        })
+      )
+      .subscribe();
+  }
 }

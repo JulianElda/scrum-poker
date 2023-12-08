@@ -10,6 +10,8 @@ import {
   doc,
   getDoc,
   DocumentSnapshot,
+  query,
+  where,
 } from "@angular/fire/firestore";
 import { Collections, Participant, Room } from "@scp/types";
 import { Observable } from "rxjs";
@@ -57,10 +59,8 @@ export class FirebaseService {
     ) as Observable<Participant[]>;
   }
 
-  getParticipant(
-    roomId: string,
-    participantId: string
-  ): Promise<DocumentSnapshot> {
+  getParticipant(roomId: string, sessionId: string) {
+    /*
     return getDoc(
       doc(
         this.firestore,
@@ -70,6 +70,22 @@ export class FirebaseService {
         participantId
       )
     );
+    */
+
+    console.log("result", roomId, sessionId);
+    const result = collectionData(
+      query(
+        collection(
+          this.firestore,
+          Collections.ROOM,
+          roomId,
+          Collections.PARTICIPANT
+        ),
+        where("uid", "==", sessionId)
+      )
+    );
+
+    return result;
   }
 
   updateParticipantVote(

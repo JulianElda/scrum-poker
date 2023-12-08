@@ -29,7 +29,8 @@ export class SessionCheckComponent implements OnInit, OnDestroy {
     this.userSignIn = this.user$.subscribe((user: User | null) => {
       if (!user) this.router.navigate(["/join", { id: roomId }]);
       else {
-        this.authService.uid = user.uid;
+        this.authService.sessionId = user.uid;
+        console.log("SessionCheckComponent", this.authService.sessionId);
         this.isLoggedIn.set(true);
       }
     });

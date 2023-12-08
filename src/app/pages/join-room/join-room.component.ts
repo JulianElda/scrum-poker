@@ -43,12 +43,16 @@ export class JoinRoomComponent {
     const roomId = this.activatedRoute.snapshot.paramMap.get("id") || "";
 
     const authUser = await signInAnonymously(this.auth);
-    this.authService.uid = authUser.user.uid;
-    await this.firebaseService.createRoomParticipant(
+
+    const participant = await this.firebaseService.createRoomParticipant(
       roomId,
       authUser.user.uid,
       this.name.value!
     );
+
+    this.authService.sessionId = authUser.user.uid;
+    this.authService.participantId = participant.id;
+    this.authService.participantName = this.name.value!;
     this.router.navigate(["/room", { id: roomId }]);
   }
 }
