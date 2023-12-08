@@ -8,8 +8,6 @@ import {
   collection,
   collectionData,
   doc,
-  getDoc,
-  DocumentSnapshot,
   query,
   where,
 } from "@angular/fire/firestore";
@@ -60,19 +58,6 @@ export class FirebaseService {
   }
 
   getParticipant(roomId: string, sessionId: string) {
-    /*
-    return getDoc(
-      doc(
-        this.firestore,
-        Collections.ROOM,
-        roomId,
-        Collections.PARTICIPANT,
-        participantId
-      )
-    );
-    */
-
-    console.log("result", roomId, sessionId);
     const result = collectionData(
       query(
         collection(

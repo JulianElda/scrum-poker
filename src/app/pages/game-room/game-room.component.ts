@@ -7,7 +7,7 @@ import { ResultComponent } from "@scp/components/result/result.component";
 import { SessionCheckComponent } from "@scp/components/session-check/session-check.component";
 import { AuthService } from "@scp/services/auth.service";
 import { FirebaseService } from "@scp/services/firebase.service";
-import { FIBONACCI, Participant, ParticipantsHasVoted } from "@scp/types";
+import { FIBONACCI, ParticipantsHasVoted } from "@scp/types";
 import { Observable, map } from "rxjs";
 
 @Component({
@@ -53,20 +53,6 @@ export class GameRoomComponent {
         }))
       )
     );
-
-  /*
-  protected currentParticipant$: Observable<unknown> = this.firebaseService
-    .getParticipant(
-      this.activatedRoute.snapshot.paramMap.get("id") || "",
-      this.authService.sessionId
-    )
-    .pipe(
-      map((result) => {
-        console.log("currentParticipant", result);
-        return result;
-      })
-    );
-    */
 
   protected onSelectCard(card: string) {
     this.firebaseService.updateParticipantVote(
