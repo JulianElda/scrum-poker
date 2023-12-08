@@ -1,4 +1,3 @@
-import { signal } from "@angular/core";
 import {
   Spectator,
   byText,
@@ -15,7 +14,7 @@ describe("ResultComponent", () => {
   test("shows participants names and votes", () => {
     spectator = createComponent({
       props: {
-        participantsVotes: signal([
+        participantsVotes: [
           {
             name: "Donald",
             vote: "13",
@@ -24,7 +23,7 @@ describe("ResultComponent", () => {
             name: "Joe",
             vote: "8",
           },
-        ]),
+        ],
       },
     });
 

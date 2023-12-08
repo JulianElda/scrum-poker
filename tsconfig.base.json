@@ -1,0 +1,21 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": ["ES2022", "dom"],
+    "baseUrl": "./",
+    "paths": {
+      "@scp/components/*": ["./components/src/lib/*"],
+      "@scp/pages/*": ["./src/app/pages/*"],
+      "@scp/services/*": ["./src/app/services/*"],
+      "@scp/types": ["./src/app/types"],
+      "components": ["components/src/index.ts"]
+    }
+  }
+}

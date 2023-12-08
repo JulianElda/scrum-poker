@@ -1,4 +1,3 @@
-import { signal } from "@angular/core";
 import {
   Spectator,
   byText,
@@ -16,7 +15,7 @@ describe("CardListComponent", () => {
   test("shows card texts", () => {
     spectator = createComponent({
       props: {
-        cards: signal(FIBONACCI),
+        cards: FIBONACCI,
       },
     });
 

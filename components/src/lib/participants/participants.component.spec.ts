@@ -1,4 +1,3 @@
-import { signal } from "@angular/core";
 import {
   Spectator,
   byText,
@@ -15,7 +14,7 @@ describe("ParticipantsComponent", () => {
   test("shows participants names", () => {
     spectator = createComponent({
       props: {
-        participants: signal([
+        participants: [
           {
             name: "Donald",
             voted: true,
@@ -24,7 +23,7 @@ describe("ParticipantsComponent", () => {
             name: "Joe",
             voted: false,
           },
-        ]),
+        ],
       },
     });
     expect(spectator.query(byText("Donald"))).toBeTruthy();
