@@ -48,9 +48,9 @@ export class CreateRoomComponent {
       this.moderatorName.value!
     );
 
-    this.authService.sessionId = authUser.user.uid;
-    this.authService.participantId = participant.id;
-    this.authService.participantName = this.moderatorName.value!;
+    this.authService.sessionId$.next(authUser.user.uid);
+    this.authService.participantId$.next(participant.id);
+    this.authService.participantName$.next(this.moderatorName.value!);
     this.router.navigate(["/room", { id: newRoom.id }]);
   }
 }

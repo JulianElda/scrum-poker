@@ -50,9 +50,9 @@ export class JoinRoomComponent {
       this.name.value!
     );
 
-    this.authService.sessionId = authUser.user.uid;
-    this.authService.participantId = participant.id;
-    this.authService.participantName = this.name.value!;
+    this.authService.sessionId$.next(authUser.user.uid);
+    this.authService.participantId$.next(participant.id);
+    this.authService.participantName$.next(this.name.value!);
     this.router.navigate(["/room", { id: roomId }]);
   }
 }

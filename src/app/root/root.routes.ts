@@ -17,8 +17,8 @@ export const rootRoutes: Route[] = [
   {
     path: "room",
     loadComponent: () =>
-      import("./../pages/game-room/game-room.component").then(
-        (m) => m.GameRoomComponent
+      import("./../pages/game-room/game-room.container.component").then(
+        (m) => m.GameRoomContainerComponent
       ),
     canActivate: [gameRoomCanActivate],
   },

@@ -10,6 +10,7 @@ import {
   query,
   where,
   getDocs,
+  doc,
 } from "@angular/fire/firestore";
 import { Collections, Participant, Room } from "@scp/types";
 import { Observable } from "rxjs";
@@ -65,8 +66,8 @@ export class FirebaseService {
     ) as Observable<Participant[]>;
   }
 
-  getParticipant(roomId: string, sessionId: string) {
-    const result = getDocs(
+  async getParticipant(roomId: string, sessionId: string) {
+    const results = await getDocs(
       query(
         collection(
           this.firestore,
@@ -77,8 +78,20 @@ export class FirebaseService {
         where("uid", "==", sessionId)
       )
     );
+    let result;
 
-    return result;
+    results.forEach((doc) => (result = doc.id));
+
+    console.log(result);
+    this.currentParticipantRef = doc(
+      this.firestore,
+      Collections.ROOM,
+      roomId,
+      Collections.PARTICIPANT,
+      result!
+    );
+
+    return this.currentParticipantRef;
   }
 
   updateParticipantVote(data: Participant) {

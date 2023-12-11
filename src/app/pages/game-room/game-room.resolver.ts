@@ -11,6 +11,5 @@ export const gameRoomCanActivate: CanActivateFn = async (
   const roomId = route.paramMap.get("id") || "";
 
   const gameDocument = await getDoc(doc(firestore, Collections.ROOM, roomId));
-
   return gameDocument.exists();
 };
