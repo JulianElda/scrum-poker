@@ -41,7 +41,7 @@ export class FirebaseService {
 
   getRoom(roomId: string): Observable<Room> {
     const roomRef = doc(this.firestore, Collections.ROOM, roomId);
-    if (this.currentRoomRef) this.currentRoomRef = roomRef;
+    if (!this.currentRoomRef) this.currentRoomRef = roomRef;
     return docData(roomRef) as Observable<Room>;
   }
 
@@ -105,7 +105,11 @@ export class FirebaseService {
     return getDoc(this.currentParticipantRef);
   }
 
-  updateParticipantVote(data: Participant) {
+  updateGameStatus(data: Partial<Room>) {
+    return updateDoc(this.currentRoomRef!, { ...data });
+  }
+
+  updateParticipantVote(data: Partial<Participant>) {
     return updateDoc(this.currentParticipantRef!, { ...data });
   }
 }

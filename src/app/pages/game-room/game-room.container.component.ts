@@ -5,7 +5,7 @@ import { SessionCheckComponent } from "@scp/components/session-check/session-che
 import { GameRoomComponent } from "@scp/pages/game-room/game-room.component";
 import { AuthService } from "@scp/services/auth.service";
 import { FirebaseService } from "@scp/services/firebase.service";
-import { FIBONACCI, ParticipantsHasVoted, Room } from "@scp/types";
+import { ParticipantsHasVoted, Room } from "@scp/types";
 import { Observable, concatMap, map, take } from "rxjs";
 
 @Component({
@@ -40,7 +40,6 @@ export class GameRoomContainerComponent {
     .pipe(map((param) => param["id"]));
   protected sessionId$ = this.authService.sessionId$;
   protected participantName$ = this.authService.participantName$;
-  protected cards = FIBONACCI;
 
   protected participants$: Observable<ParticipantsHasVoted[]> =
     this.roomId$.pipe(

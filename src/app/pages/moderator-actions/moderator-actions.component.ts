@@ -1,0 +1,42 @@
+import { Component, Input, inject } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { GameStatus, Room } from "@scp/types";
+import { ButtonComponent } from "components";
+import { FirebaseService } from "@scp/services/firebase.service";
+
+@Component({
+  selector: "scp-moderator-actions",
+  standalone: true,
+  imports: [CommonModule, ButtonComponent],
+  styleUrl: "./moderator-actions.component.css",
+  template: `
+    @if (room?.moderator === sessionId) {
+      <scp-button
+        [text]="moderatorButtonText"
+        (clickButton)="onModeratorAction()" />
+    }
+  `,
+})
+export class ModeratorActionsComponent {
+  @Input({ required: true }) sessionId: string | null = "";
+  @Input({ required: true }) room: Room | null = null;
+
+  private firebaseService = inject(FirebaseService);
+
+  protected get moderatorButtonText(): string {
+    return this.room?.status === GameStatus.VOTING
+      ? "Reveal votes"
+      : "Reset game";
+  }
+
+  protected onModeratorAction() {
+    const status =
+      this.room?.status === GameStatus.VOTING
+        ? GameStatus.REVEAL
+        : GameStatus.VOTING;
+
+    this.firebaseService.updateGameStatus({
+      status,
+    });
+  }
+}

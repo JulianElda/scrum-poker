@@ -4,8 +4,9 @@ import { CardListComponent } from "@scp/components/card-list/card-list.component
 import { ParticipantsComponent } from "@scp/components/participants/participants.component";
 import { ResultComponent } from "@scp/components/result/result.component";
 import { SessionCheckComponent } from "@scp/components/session-check/session-check.component";
+import { ModeratorActionsComponent } from "@scp/pages/moderator-actions/moderator-actions.component";
 import { FirebaseService } from "@scp/services/firebase.service";
-import { FIBONACCI, ParticipantsHasVoted, Room } from "@scp/types";
+import { FIBONACCI, GameStatus, ParticipantsHasVoted, Room } from "@scp/types";
 
 @Component({
   selector: "scp-game-room",
@@ -16,15 +17,23 @@ import { FIBONACCI, ParticipantsHasVoted, Room } from "@scp/types";
     ParticipantsComponent,
     CardListComponent,
     ResultComponent,
+    ModeratorActionsComponent,
   ],
   styleUrl: "./game-room.component.css",
   template: `
     <div class="mx-auto max-w-3xl">
       <div class="mx-auto max-w-2xl">
-        <scp-card-list
-          [cards]="cards"
-          (selectCard)="onSelectCard($event)" />
-        <scp-participants [participants]="participants" />
+        @if (room?.status === GameStatus.VOTING) {
+          <scp-card-list
+            [cards]="cards"
+            (selectCard)="onSelectCard($event)" />
+          <scp-participants [participants]="participants" />
+        } @else if (room?.status === GameStatus.REVEAL) {
+          <p>todo reveal</p>
+        }
+        <scp-moderator-actions
+          [room]="room"
+          [sessionId]="sessionId" />
       </div>
     </div>
   `,
@@ -38,12 +47,12 @@ export class GameRoomComponent {
 
   private firebaseService = inject(FirebaseService);
 
+  protected GameStatus = GameStatus;
+
   protected cards = FIBONACCI;
 
   protected onSelectCard(card: string) {
     this.firebaseService.updateParticipantVote({
-      name: this.participantName!,
-      uid: this.sessionId!,
       vote: card,
     });
   }
