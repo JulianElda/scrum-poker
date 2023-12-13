@@ -11,6 +11,8 @@ import {
   where,
   getDocs,
   doc,
+  getDoc,
+  limit,
 } from "@angular/fire/firestore";
 import { Collections, Participant, Room } from "@scp/types";
 import { Observable } from "rxjs";
@@ -33,6 +35,13 @@ export class FirebaseService {
       }
     );
     return this.currentRoomRef;
+  }
+
+  async getRoom(roomId: string) {
+    const roomRef = doc(this.firestore, Collections.ROOM, roomId);
+    if (this.currentRoomRef) this.currentRoomRef = roomRef;
+
+    return getDoc(roomRef);
   }
 
   async createRoomParticipant(
@@ -75,14 +84,15 @@ export class FirebaseService {
           roomId,
           Collections.PARTICIPANT
         ),
-        where("uid", "==", sessionId)
+        where("uid", "==", sessionId),
+        limit(1)
       )
     );
     let result;
+    results.forEach((doc) => {
+      result = doc.id;
+    });
 
-    results.forEach((doc) => (result = doc.id));
-
-    console.log(result);
     this.currentParticipantRef = doc(
       this.firestore,
       Collections.ROOM,
@@ -91,7 +101,7 @@ export class FirebaseService {
       result!
     );
 
-    return this.currentParticipantRef;
+    return getDoc(this.currentParticipantRef);
   }
 
   updateParticipantVote(data: Participant) {

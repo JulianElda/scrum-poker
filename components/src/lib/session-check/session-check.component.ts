@@ -3,7 +3,16 @@ import { Auth, User, user } from "@angular/fire/auth";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AuthService } from "@scp/services/auth.service";
 import { FirebaseService } from "@scp/services/firebase.service";
-import { Subscription, combineLatest, concatMap, filter, map, tap } from "rxjs";
+import {
+  Observable,
+  Subscription,
+  combineLatest,
+  concatMap,
+  filter,
+  map,
+  take,
+  tap,
+} from "rxjs";
 
 @Component({
   selector: "scp-session-check",
@@ -43,16 +52,20 @@ export class SessionCheckComponent implements OnInit, OnDestroy {
     );
 
   private currentParticipant$ = combineLatest([
-    this.authService.sessionId$.pipe(filter((sessionId) => sessionId !== "")),
-    this.activatedRoute.params.pipe(map((param) => param["id"])),
+    this.authService.sessionId$
+      .pipe(filter((sessionId) => sessionId !== ""))
+      .pipe(take(1)),
+    this.activatedRoute.params.pipe(map((param) => param["id"])).pipe(take(1)),
   ]).pipe(
     concatMap(([sessionId, roomId]) => {
       return this.firebaseService
         .getParticipant(roomId, sessionId)
-        .then((result: any) => {
-          const participant = result?.docs?.[0]?.data();
-          this.authService.participantName$.next(participant["name"]);
-          this.authService.sessionId$.next(participant["uid"]);
+        .then((result) => {
+          if (result.exists()) {
+            const participant = result.data();
+            this.authService.participantName$.next(participant["name"]);
+            this.authService.sessionId$.next(participant["uid"]);
+          }
         });
     })
   );
@@ -63,7 +76,7 @@ export class SessionCheckComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.userSignIn) this.userSignIn.unsubscribe();
-    if (this.currentParticipant) this.currentParticipant.unsubscribe();
+    this.userSignIn?.unsubscribe();
+    this.currentParticipant?.unsubscribe();
   }
 }
