@@ -5,8 +5,8 @@ import { SessionCheckComponent } from "@scp/components/session-check/session-che
 import { GameRoomComponent } from "@scp/pages/game-room/game-room.component";
 import { AuthService } from "@scp/services/auth.service";
 import { FirebaseService } from "@scp/services/firebase.service";
-import { FIBONACCI, ParticipantsHasVoted } from "@scp/types";
-import { Observable, concatMap, map } from "rxjs";
+import { FIBONACCI, ParticipantsHasVoted, Room } from "@scp/types";
+import { Observable, concatMap, map, take } from "rxjs";
 
 @Component({
   selector: "scp-game-room-container",
@@ -17,13 +17,15 @@ import { Observable, concatMap, map } from "rxjs";
       @if (
         (roomId$ | async) !== "" &&
         (sessionId$ | async) !== "" &&
-        (participantName$ | async) !== ""
+        (participantName$ | async) !== "" &&
+        (gameRoom$ | async)
       ) {
         <scp-game-room
           [roomId]="roomId$ | async"
           [sessionId]="sessionId$ | async"
           [participantName]="participantName$ | async"
-          [participants]="participants$ | async" />
+          [participants]="participants$ | async"
+          [room]="gameRoom$ | async" />
       }
     </scp-session-check>
   `,
@@ -33,9 +35,9 @@ export class GameRoomContainerComponent {
   private authService = inject(AuthService);
   private firebaseService = inject(FirebaseService);
 
-  protected roomId$: Observable<string> = this.activatedRoute.params.pipe(
-    map((param) => param["id"])
-  );
+  protected roomId$: Observable<string> = this.activatedRoute.params
+    .pipe(take(1))
+    .pipe(map((param) => param["id"]));
   protected sessionId$ = this.authService.sessionId$;
   protected participantName$ = this.authService.participantName$;
   protected cards = FIBONACCI;
@@ -53,4 +55,10 @@ export class GameRoomContainerComponent {
         );
       })
     );
+
+  protected gameRoom$: Observable<Room> = this.roomId$.pipe(
+    concatMap((roomId: string) => {
+      return this.firebaseService.getRoom(roomId);
+    })
+  );
 }

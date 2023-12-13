@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { AuthService } from "@scp/services/auth.service";
 import { FirebaseService } from "@scp/services/firebase.service";
 import {
-  Observable,
   Subscription,
   combineLatest,
   concatMap,

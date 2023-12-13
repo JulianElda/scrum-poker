@@ -13,8 +13,9 @@ import {
   doc,
   getDoc,
   limit,
+  docData,
 } from "@angular/fire/firestore";
-import { Collections, Participant, Room } from "@scp/types";
+import { Collections, GameStatus, Participant, Room } from "@scp/types";
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -32,16 +33,16 @@ export class FirebaseService {
       <Room>{
         date: Timestamp.fromDate(new Date()),
         moderator,
+        status: GameStatus.VOTING,
       }
     );
     return this.currentRoomRef;
   }
 
-  async getRoom(roomId: string) {
+  getRoom(roomId: string): Observable<Room> {
     const roomRef = doc(this.firestore, Collections.ROOM, roomId);
     if (this.currentRoomRef) this.currentRoomRef = roomRef;
-
-    return getDoc(roomRef);
+    return docData(roomRef) as Observable<Room>;
   }
 
   async createRoomParticipant(

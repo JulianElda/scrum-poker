@@ -5,7 +5,7 @@ import { ParticipantsComponent } from "@scp/components/participants/participants
 import { ResultComponent } from "@scp/components/result/result.component";
 import { SessionCheckComponent } from "@scp/components/session-check/session-check.component";
 import { FirebaseService } from "@scp/services/firebase.service";
-import { FIBONACCI, ParticipantsHasVoted } from "@scp/types";
+import { FIBONACCI, ParticipantsHasVoted, Room } from "@scp/types";
 
 @Component({
   selector: "scp-game-room",
@@ -34,6 +34,7 @@ export class GameRoomComponent {
   @Input({ required: true }) sessionId: string | null = "";
   @Input({ required: true }) participantName: string | null = "";
   @Input({ required: true }) participants: ParticipantsHasVoted[] | null = [];
+  @Input({ required: true }) room: Room | null = null;
 
   private firebaseService = inject(FirebaseService);
 
