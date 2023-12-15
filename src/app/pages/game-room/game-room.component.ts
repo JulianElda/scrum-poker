@@ -8,6 +8,7 @@ import {
   ParticipantsComponent,
   ResultComponent,
   SessionCheckComponent,
+  ShareLinkComponent,
 } from "components";
 
 @Component({
@@ -19,6 +20,7 @@ import {
     ParticipantsComponent,
     ResultComponent,
     SessionCheckComponent,
+    ShareLinkComponent,
     ModeratorActionsComponent,
   ],
   styleUrl: "./game-room.component.css",
@@ -37,6 +39,7 @@ import {
         <scp-moderator-actions
           [room]="room"
           [sessionId]="sessionId" />
+        <scp-share-link />
       </div>
     </div>
   `,

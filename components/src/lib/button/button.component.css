@@ -1,6 +1,7 @@
 .button {
   @apply rounded-md 
-    bg-sky-600 p-2
+    bg-sky-600
+    p-2 text-lg
     font-semibold
     text-white shadow-sm
     hover:bg-sky-500

@@ -9,3 +9,4 @@ export * from "./lib/input/input.component";
 export * from "./lib/participants/participants.component";
 export * from "./lib/result/result.component";
 export * from "./lib/session-check/session-check.component";
+export * from "./lib/share-link/share-link.component";
