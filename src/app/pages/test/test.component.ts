@@ -63,7 +63,7 @@ export class TestComponent {
     },
   ];
 
-  setSelected(value: string) {
-    this.selectedCard.set(value);
+  setSelected(value: string | null) {
+    this.selectedCard.set(value!);
   }
 }

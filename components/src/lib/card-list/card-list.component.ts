@@ -18,12 +18,13 @@ import { FIBONACCI } from "@scp/types";
 })
 export class CardListComponent {
   @Input({ required: true }) cards = FIBONACCI;
-  @Output() selectCard = new EventEmitter<string>();
+  @Input() selectedCard: string | null = null;
 
-  protected selectedCard = "";
+  @Output() selectCard = new EventEmitter<string | null>();
 
   protected clickCard(card: string) {
-    this.selectedCard = card;
-    this.selectCard.emit(card);
+    if (card === this.selectedCard) this.selectedCard = null;
+    else this.selectedCard = card;
+    this.selectCard.emit(this.selectedCard);
   }
 }

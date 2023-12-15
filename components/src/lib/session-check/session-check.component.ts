@@ -62,8 +62,9 @@ export class SessionCheckComponent implements OnInit, OnDestroy {
         .then((result) => {
           if (result.exists()) {
             const participant = result.data();
-            this.authService.participantName$.next(participant["name"]);
             this.authService.sessionId$.next(participant["uid"]);
+            this.authService.participantName$.next(participant["name"]);
+            this.authService.participantVote$.next(participant["vote"]);
           }
         });
     })

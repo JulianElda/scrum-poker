@@ -24,6 +24,7 @@ import { Observable, concatMap, map, take } from "rxjs";
           [roomId]="roomId$ | async"
           [sessionId]="sessionId$ | async"
           [participantName]="participantName$ | async"
+          [participantVote]="participantVote$ | async"
           [participants]="participants$ | async"
           [room]="gameRoom$ | async" />
       }
@@ -40,6 +41,7 @@ export class GameRoomContainerComponent {
     .pipe(map((param) => param["id"]));
   protected sessionId$ = this.authService.sessionId$;
   protected participantName$ = this.authService.participantName$;
+  protected participantVote$ = this.authService.participantVote$;
 
   protected participants$: Observable<ParticipantsHasVoted[]> =
     this.roomId$.pipe(
@@ -48,7 +50,7 @@ export class GameRoomContainerComponent {
           map((participants) =>
             participants.map((participant) => ({
               name: participant.name,
-              voted: participant.vote !== "",
+              voted: !!participant.vote,
             }))
           )
         );

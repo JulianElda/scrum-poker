@@ -26,6 +26,7 @@ import { FIBONACCI, GameStatus, ParticipantsHasVoted, Room } from "@scp/types";
         @if (room?.status === GameStatus.VOTING) {
           <scp-card-list
             [cards]="cards"
+            [selectedCard]="participantVote"
             (selectCard)="onSelectCard($event)" />
           <scp-participants [participants]="participants" />
         } @else if (room?.status === GameStatus.REVEAL) {
@@ -42,6 +43,7 @@ export class GameRoomComponent {
   @Input({ required: true }) roomId: string | null = "";
   @Input({ required: true }) sessionId: string | null = "";
   @Input({ required: true }) participantName: string | null = "";
+  @Input({ required: true }) participantVote: string | null = "";
   @Input({ required: true }) participants: ParticipantsHasVoted[] | null = [];
   @Input({ required: true }) room: Room | null = null;
 
@@ -51,9 +53,9 @@ export class GameRoomComponent {
 
   protected cards = FIBONACCI;
 
-  protected onSelectCard(card: string) {
+  protected onSelectCard(card: string | null) {
     this.firebaseService.updateParticipantVote({
-      vote: card,
+      vote: card!,
     });
   }
 }
