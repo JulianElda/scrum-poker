@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import {
   Spectator,
   byLabel,
+  byText,
   createComponentFactory,
   mockProvider,
 } from "@ngneat/spectator/jest";
@@ -20,8 +21,9 @@ describe("CreateRoomComponent", () => {
     ],
   });
 
-  test("shows name input field", () => {
+  test("shows name input field and button", () => {
     spectator = createComponent();
-    expect(spectator.query(byLabel("Moderator name"))).toBeTruthy();
+    expect(spectator.query(byLabel("Name"))).toBeTruthy();
+    expect(spectator.query(byText("Create game"))).toBeTruthy();
   });
 });

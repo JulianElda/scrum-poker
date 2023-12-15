@@ -23,4 +23,31 @@ describe("CardListComponent", () => {
       expect(spectator.query(byText(text))).toBeTruthy();
     });
   });
+
+  test("emits selected card value", () => {
+    spectator = createComponent({
+      props: {
+        cards: FIBONACCI,
+      },
+    });
+
+    const emitSpy = jest.spyOn(spectator.component.selectCard, "emit");
+
+    spectator.click(byText("13"));
+    expect(emitSpy).toHaveBeenCalledWith("13");
+  });
+
+  test("emits null when deselecting card", () => {
+    spectator = createComponent({
+      props: {
+        cards: FIBONACCI,
+      },
+    });
+
+    const emitSpy = jest.spyOn(spectator.component.selectCard, "emit");
+
+    spectator.click(byText("13"));
+    spectator.click(byText("13"));
+    expect(emitSpy).toHaveBeenCalledWith(null);
+  });
 });

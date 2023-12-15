@@ -21,12 +21,16 @@ import { Participant } from "@scp/types";
           *ngFor="let participant of participants">
           @if (!!participant.vote) {
             <fa-icon
+              aria-hidden="true"
               class="h-4 w-4 text-green-400"
               [icon]="icons.voted" />
+            <span class="fa-sr-only sr-only">Ready</span>
           } @else {
             <fa-icon
+              aria-hidden="true"
               class="h-4 w-4 text-red-400"
               [icon]="icons.pending" />
+            <span class="fa-sr-only sr-only">Pending</span>
           }
           <span class="mx-2">{{ participant.name }}</span>
         </div>
@@ -37,7 +41,7 @@ import { Participant } from "@scp/types";
 export class ParticipantsComponent {
   @Input({ required: true }) participants: Participant[] | null = null;
 
-  protected icons = {
+  protected readonly icons = {
     voted: faCircleCheck,
     pending: faCircleXmark,
   };

@@ -1,4 +1,3 @@
-import { CommonModule } from "@angular/common";
 import { Component, inject } from "@angular/core";
 import { Auth, signInAnonymously } from "@angular/fire/auth";
 import { FormControl } from "@angular/forms";
@@ -13,18 +12,18 @@ import {
 @Component({
   selector: "scp-create-room",
   standalone: true,
-  imports: [CommonModule, ButtonComponent, CardLayoutComponent, InputComponent],
+  imports: [ButtonComponent, CardLayoutComponent, InputComponent],
   styleUrl: "./create-room.component.css",
   template: `
     <div class="mx-auto max-w-sm space-y-2">
       <scp-card-layout>
         <scp-input
           [id]="'input-id'"
-          [label]="'Moderator name'"
+          [label]="'Name'"
           [placeholder]="'My name'"
           [formControl]="moderatorName" />
         <scp-button
-          [text]="'Create room'"
+          [text]="'Create game'"
           [shrink]="false"
           (clickButton)="onCreateRoom()" />
       </scp-card-layout>

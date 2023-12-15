@@ -1,21 +1,21 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import {
+  createHostFactory,
+  byText,
+  SpectatorHost,
+} from "@ngneat/spectator/jest";
 import { CardLayoutComponent } from "./card-layout.component";
 
 describe("CardLayoutComponent", () => {
-  let component: CardLayoutComponent;
-  let fixture: ComponentFixture<CardLayoutComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [CardLayoutComponent],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(CardLayoutComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  let spectator: SpectatorHost<CardLayoutComponent>;
+  const createHost = createHostFactory({
+    component: CardLayoutComponent,
+    template: `
+      <scp-card-layout>test-content</scp-card-layout>
+    `,
   });
 
-  it("should create", () => {
-    expect(component).toBeTruthy();
+  test("projects content", () => {
+    spectator = createHost();
+    expect(spectator.query(byText("test-content"))).toBeTruthy();
   });
 });

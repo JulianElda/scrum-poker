@@ -23,7 +23,7 @@ import {
           [placeholder]="'My name'"
           [formControl]="name" />
         <scp-button
-          [text]="'Join room'"
+          [text]="'Join'"
           [shrink]="false"
           (clickButton)="onJoinRoom()" />
       </scp-card-layout>

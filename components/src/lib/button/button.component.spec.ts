@@ -1,5 +1,6 @@
 import {
   Spectator,
+  byTestId,
   byText,
   createComponentFactory,
 } from "@ngneat/spectator/jest";
@@ -15,9 +16,11 @@ describe("ButtonComponent", () => {
     spectator = createComponent({
       props: {
         text: "Button text",
+        testId: "testid",
       },
     });
 
     expect(spectator.query(byText("Button text"))).toBeTruthy();
+    expect(spectator.query(byTestId("testid"))).toBeTruthy();
   });
 });

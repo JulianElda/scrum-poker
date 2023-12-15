@@ -10,9 +10,11 @@ import { ButtonComponent } from "components";
   styleUrl: "./moderator-actions.component.css",
   template: `
     @if (room?.moderator === sessionId) {
-      <scp-button
-        [text]="moderatorButtonText"
-        (clickButton)="onModeratorAction()" />
+      <div class="flex justify-center">
+        <scp-button
+          [text]="moderatorButtonText"
+          (clickButton)="onModeratorAction()" />
+      </div>
     }
   `,
 })

@@ -19,4 +19,14 @@ describe("CardComponent", () => {
     });
     expect(spectator.query(byText("13"))).toBeTruthy();
   });
+
+  test("has 'selected' class", () => {
+    spectator = createComponent({
+      props: {
+        text: "13",
+        selected: true,
+      },
+    });
+    expect(spectator.query(".container")).toHaveClass("selected");
+  });
 });

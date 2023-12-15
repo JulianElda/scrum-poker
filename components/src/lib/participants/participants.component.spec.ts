@@ -17,16 +17,20 @@ describe("ParticipantsComponent", () => {
         participants: [
           {
             name: "Donald",
-            voted: true,
+            uid: "Donald",
+            vote: "13",
           },
           {
             name: "Joe",
-            voted: false,
+            uid: "Joe",
+            vote: undefined,
           },
         ],
       },
     });
     expect(spectator.query(byText("Donald"))).toBeTruthy();
     expect(spectator.query(byText("Joe"))).toBeTruthy();
+    expect(spectator.query(byText("Ready"))).toBeTruthy();
+    expect(spectator.query(byText("Pending"))).toBeTruthy();
   });
 });

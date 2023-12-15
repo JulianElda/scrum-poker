@@ -14,13 +14,15 @@ describe("ResultComponent", () => {
   test("shows participants names and votes", () => {
     spectator = createComponent({
       props: {
-        participantsVotes: [
+        participants: [
           {
             name: "Donald",
+            uid: "Donald",
             vote: "13",
           },
           {
             name: "Joe",
+            uid: "Joe",
             vote: "8",
           },
         ],

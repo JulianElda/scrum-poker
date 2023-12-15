@@ -2,6 +2,7 @@ import { Auth } from "@angular/fire/auth";
 import {
   Spectator,
   byLabel,
+  byText,
   createComponentFactory,
   mockProvider,
 } from "@ngneat/spectator/jest";
@@ -21,8 +22,9 @@ describe("JoinRoomComponent", () => {
     ],
   });
 
-  test("shows name input field", () => {
+  test("shows name input field and button", () => {
     spectator = createComponent();
     expect(spectator.query(byLabel("Name"))).toBeTruthy();
+    expect(spectator.query(byText("Join"))).toBeTruthy();
   });
 });

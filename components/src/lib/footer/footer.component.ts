@@ -13,14 +13,18 @@ import { HyperlinkComponent } from "@scp/components/hyperlink/hyperlink.componen
       <div class="flex justify-end">
         @if (isDarkTheme()) {
           <fa-icon
+            aria-hidden="true"
             class="h-6 w-6 cursor-pointer"
             [icon]="icons.dark"
             (click)="changeTheme()" />
+          <span class="fa-sr-only sr-only">Change to light theme</span>
         } @else {
           <fa-icon
+            aria-hidden="true"
             class="h-6 w-6 cursor-pointer"
             [icon]="icons.light"
             (click)="changeTheme()" />
+          <span class="fa-sr-only sr-only">Change to dark theme</span>
         }
         <scp-hyperlink
           class="flex-1 text-end"
@@ -32,7 +36,7 @@ import { HyperlinkComponent } from "@scp/components/hyperlink/hyperlink.componen
   `,
 })
 export class FooterComponent {
-  protected icons = {
+  protected readonly icons = {
     dark: faMoon,
     light: faSun,
   };
