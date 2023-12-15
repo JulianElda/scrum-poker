@@ -1,7 +1,5 @@
-import { query, transition, trigger } from "@angular/animations";
 import { NgForOf } from "@angular/common";
-import { Component, HostBinding, Input } from "@angular/core";
-import { resultCardsAnimation } from "@scp/animations";
+import { Component, Input } from "@angular/core";
 import { CardComponent } from "@scp/components/card/card.component";
 import { Participant } from "@scp/types";
 
@@ -9,7 +7,6 @@ import { Participant } from "@scp/types";
   selector: "scp-result",
   standalone: true,
   imports: [NgForOf, CardComponent],
-  animations: [resultCardsAnimation],
   styleUrl: "./result.component.css",
   template: `
     <div class="mx-auto my-10 max-w-xl">
@@ -29,8 +26,4 @@ import { Participant } from "@scp/types";
 export class ResultComponent {
   @Input({ required: true }) participants: Participant[] | undefined =
     undefined;
-
-  @HostBinding("@cardsEnterAnimation") get listAnimation() {
-    return true;
-  }
 }

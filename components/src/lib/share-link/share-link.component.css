@@ -6,10 +6,13 @@
 .copy-button {
   @apply relative -ml-px
     inline-flex items-center gap-x-1.5
-    rounded-r-md px-3 py-2
+    rounded-r-md bg-slate-100 px-3
+    py-2
     text-gray-900
     ring-1
-    ring-inset ring-gray-300
-    hover:bg-gray-50
-    focus:border-sky-300 focus:ring-sky-300;
+    ring-inset
+    ring-gray-300
+    hover:bg-gray-50 focus:border-sky-300
+    focus:ring-sky-300
+    dark:bg-slate-800 dark:text-gray-100;
 }

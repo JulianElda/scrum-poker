@@ -17,7 +17,19 @@ export const slideRightAnimation = [
   ]),
 ];
 
-export const resultCardsAnimation = trigger("cardsEnterAnimation", [
+export const componentEnterAnimation = trigger("componentEnterAnimation", [
+  transition(":enter", [
+    query(":self", [
+      style({ opacity: 0 }),
+      animate(
+        "1000ms cubic-bezier(0.35, 0, 0.25, 1)",
+        style({ opacity: 1, transform: "none" })
+      ),
+    ]),
+  ]),
+]);
+
+export const resultCardsAnimation = trigger("resultCardsAnimation", [
   transition(":enter", [
     query(".result-section", [...slideRightAnimation], { optional: true }),
   ]),
@@ -25,4 +37,8 @@ export const resultCardsAnimation = trigger("cardsEnterAnimation", [
 
 export const cardsEnterAnimation = transition(":enter", [
   query("scp-card", [...slideRightAnimation], { optional: true }),
+]);
+
+export const cardListAnimation = trigger("cardListAnimation", [
+  cardsEnterAnimation,
 ]);

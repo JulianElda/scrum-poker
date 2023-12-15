@@ -1,5 +1,10 @@
 import { AsyncPipe } from "@angular/common";
 import { Component, Input, inject } from "@angular/core";
+import {
+  cardListAnimation,
+  componentEnterAnimation,
+  resultCardsAnimation,
+} from "@scp/animations";
 import { ModeratorActionsComponent } from "@scp/pages/moderator-actions/moderator-actions.component";
 import { VotedParticipantPipe } from "@scp/pipes";
 import { FirebaseService } from "@scp/services";
@@ -25,6 +30,11 @@ import {
     ModeratorActionsComponent,
     VotedParticipantPipe,
   ],
+  animations: [
+    cardListAnimation,
+    componentEnterAnimation,
+    resultCardsAnimation,
+  ],
   styleUrl: "./game-room.component.css",
   template: `
     <div class="mx-auto max-w-3xl">
@@ -33,15 +43,21 @@ import {
           <scp-card-list
             [cards]="cards"
             [selectedCard]="participantVote"
-            (selectCard)="onSelectCard($event)" />
-          <scp-participants [participants]="participants" />
+            (selectCard)="onSelectCard($event)"
+            [@cardListAnimation]="true" />
+          <scp-participants
+            [participants]="participants"
+            [@componentEnterAnimation]="true" />
+          <scp-share-link [@componentEnterAnimation]="true" />
         } @else if (room?.status === GameStatus.REVEAL) {
-          <scp-result [participants]="participants | votedParticipant" />
+          <scp-result
+            [participants]="participants | votedParticipant"
+            [@resultCardsAnimation]="true" />
         }
         <scp-moderator-actions
           [room]="room"
-          [sessionId]="sessionId" />
-        <scp-share-link />
+          [sessionId]="sessionId"
+          [@componentEnterAnimation]="true" />
       </div>
     </div>
   `,
