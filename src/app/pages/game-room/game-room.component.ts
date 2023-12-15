@@ -1,6 +1,7 @@
 import { AsyncPipe } from "@angular/common";
 import { Component, Input, inject } from "@angular/core";
 import { ModeratorActionsComponent } from "@scp/pages/moderator-actions/moderator-actions.component";
+import { VotedParticipantPipe } from "@scp/pipes";
 import { FirebaseService } from "@scp/services";
 import { FIBONACCI, GameStatus, Participant, Room } from "@scp/types";
 import {
@@ -22,6 +23,7 @@ import {
     SessionCheckComponent,
     ShareLinkComponent,
     ModeratorActionsComponent,
+    VotedParticipantPipe,
   ],
   styleUrl: "./game-room.component.css",
   template: `
@@ -34,7 +36,7 @@ import {
             (selectCard)="onSelectCard($event)" />
           <scp-participants [participants]="participants" />
         } @else if (room?.status === GameStatus.REVEAL) {
-          <scp-result [participants]="participants" />
+          <scp-result [participants]="participants | votedParticipant" />
         }
         <scp-moderator-actions
           [room]="room"

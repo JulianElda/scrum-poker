@@ -27,7 +27,7 @@ describe("ModeratorActionsComponent", () => {
         sessionId: "moderator",
       },
     });
-    expect(spectator.query(byText("Reveal votes"))).toBeTruthy();
+    expect(spectator.query(byText("Reveal cards"))).toBeTruthy();
   });
 
   test("shows reset action when game is in reveal phase", () => {
@@ -41,7 +41,7 @@ describe("ModeratorActionsComponent", () => {
         sessionId: "moderator",
       },
     });
-    expect(spectator.query(byText("Reset game"))).toBeTruthy();
+    expect(spectator.query(byText("Play again"))).toBeTruthy();
   });
 
   test("shows nothing if user is not the game moderator", () => {
@@ -55,7 +55,7 @@ describe("ModeratorActionsComponent", () => {
         sessionId: "player",
       },
     });
-    expect(spectator.query(byText("Reveal votes"))).not.toBeTruthy();
-    expect(spectator.query(byText("Reset game"))).not.toBeTruthy();
+    expect(spectator.query(byText("Reveal cards"))).not.toBeTruthy();
+    expect(spectator.query(byText("Play again"))).not.toBeTruthy();
   });
 });

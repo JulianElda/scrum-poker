@@ -27,8 +27,8 @@ export class ModeratorActionsComponent {
 
   protected get moderatorButtonText(): string {
     return this.room?.status === GameStatus.VOTING
-      ? "Reveal votes"
-      : "Reset game";
+      ? "Reveal cards"
+      : "Play again";
   }
 
   protected onModeratorAction() {
