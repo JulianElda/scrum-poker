@@ -1,4 +1,3 @@
-import { CommonModule } from "@angular/common";
 import { Component, Input } from "@angular/core";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 
@@ -6,7 +5,7 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
   selector: "scp-input",
   standalone: true,
   styleUrl: "./input.component.css",
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   template: `
     <div class="mb-2">
       <label

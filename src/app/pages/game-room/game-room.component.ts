@@ -1,22 +1,24 @@
 import { AsyncPipe } from "@angular/common";
 import { Component, Input, inject } from "@angular/core";
-import { CardListComponent } from "@scp/components/card-list/card-list.component";
-import { ParticipantsComponent } from "@scp/components/participants/participants.component";
-import { ResultComponent } from "@scp/components/result/result.component";
-import { SessionCheckComponent } from "@scp/components/session-check/session-check.component";
 import { ModeratorActionsComponent } from "@scp/pages/moderator-actions/moderator-actions.component";
-import { FirebaseService } from "@scp/services/firebase.service";
-import { FIBONACCI, GameStatus, ParticipantsHasVoted, Room } from "@scp/types";
+import { FirebaseService } from "@scp/services";
+import { FIBONACCI, GameStatus, Participant, Room } from "@scp/types";
+import {
+  CardListComponent,
+  ParticipantsComponent,
+  ResultComponent,
+  SessionCheckComponent,
+} from "components";
 
 @Component({
   selector: "scp-game-room",
   standalone: true,
   imports: [
     AsyncPipe,
-    SessionCheckComponent,
-    ParticipantsComponent,
     CardListComponent,
+    ParticipantsComponent,
     ResultComponent,
+    SessionCheckComponent,
     ModeratorActionsComponent,
   ],
   styleUrl: "./game-room.component.css",
@@ -30,7 +32,7 @@ import { FIBONACCI, GameStatus, ParticipantsHasVoted, Room } from "@scp/types";
             (selectCard)="onSelectCard($event)" />
           <scp-participants [participants]="participants" />
         } @else if (room?.status === GameStatus.REVEAL) {
-          <p>todo reveal</p>
+          <scp-result [participants]="participants" />
         }
         <scp-moderator-actions
           [room]="room"
@@ -41,10 +43,10 @@ import { FIBONACCI, GameStatus, ParticipantsHasVoted, Room } from "@scp/types";
 })
 export class GameRoomComponent {
   @Input({ required: true }) roomId: string | null = "";
+  @Input({ required: true }) participants: Participant[] = [];
   @Input({ required: true }) sessionId: string | null = "";
   @Input({ required: true }) participantName: string | null = "";
   @Input({ required: true }) participantVote: string | null = "";
-  @Input({ required: true }) participants: ParticipantsHasVoted[] | null = [];
   @Input({ required: true }) room: Room | null = null;
 
   private firebaseService = inject(FirebaseService);

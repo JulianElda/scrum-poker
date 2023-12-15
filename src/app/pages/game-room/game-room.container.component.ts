@@ -1,11 +1,10 @@
 import { AsyncPipe, NgIf } from "@angular/common";
 import { Component, inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { SessionCheckComponent } from "@scp/components/session-check/session-check.component";
 import { GameRoomComponent } from "@scp/pages/game-room/game-room.component";
-import { AuthService } from "@scp/services/auth.service";
-import { FirebaseService } from "@scp/services/firebase.service";
-import { ParticipantsHasVoted, Room } from "@scp/types";
+import { AuthService, FirebaseService } from "@scp/services";
+import { Participant, Room } from "@scp/types";
+import { SessionCheckComponent } from "components";
 import { Observable, concatMap, map, take } from "rxjs";
 
 @Component({
@@ -25,7 +24,7 @@ import { Observable, concatMap, map, take } from "rxjs";
           [sessionId]="sessionId$ | async"
           [participantName]="participantName$ | async"
           [participantVote]="participantVote$ | async"
-          [participants]="participants$ | async"
+          [participants]="(participants$ | async)!"
           [room]="gameRoom$ | async" />
       }
     </scp-session-check>
@@ -43,19 +42,11 @@ export class GameRoomContainerComponent {
   protected participantName$ = this.authService.participantName$;
   protected participantVote$ = this.authService.participantVote$;
 
-  protected participants$: Observable<ParticipantsHasVoted[]> =
-    this.roomId$.pipe(
-      concatMap((roomId: string) => {
-        return this.firebaseService.getParticipants(roomId).pipe(
-          map((participants) =>
-            participants.map((participant) => ({
-              name: participant.name,
-              voted: !!participant.vote,
-            }))
-          )
-        );
-      })
-    );
+  protected participants$: Observable<Participant[]> = this.roomId$.pipe(
+    concatMap((roomId: string) => {
+      return this.firebaseService.getParticipants(roomId);
+    })
+  );
 
   protected gameRoom$: Observable<Room> = this.roomId$.pipe(
     concatMap((roomId: string) => {

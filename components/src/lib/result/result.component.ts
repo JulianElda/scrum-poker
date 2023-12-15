@@ -1,7 +1,7 @@
 import { NgForOf } from "@angular/common";
 import { Component, Input } from "@angular/core";
 import { CardComponent } from "@scp/components/card/card.component";
-import { ParticipantsVote } from "@scp/types";
+import { Participant } from "@scp/types";
 
 @Component({
   selector: "scp-result",
@@ -11,8 +11,8 @@ import { ParticipantsVote } from "@scp/types";
   template: `
     <div class="mx-auto max-w-xl">
       <div class="grid grid-cols-4 place-content-evenly gap-4">
-        <div *ngFor="let participantsVote of participantsVotes">
-          <scp-card [text]="participantsVote.vote" />
+        <div *ngFor="let participantsVote of participants">
+          <scp-card [text]="participantsVote.vote!" />
           <div class="my-2 text-center text-xl">
             {{ participantsVote.name }}
           </div>
@@ -22,6 +22,6 @@ import { ParticipantsVote } from "@scp/types";
   `,
 })
 export class ResultComponent {
-  @Input({ required: true }) participantsVotes: ParticipantsVote[] | undefined =
+  @Input({ required: true }) participants: Participant[] | undefined =
     undefined;
 }

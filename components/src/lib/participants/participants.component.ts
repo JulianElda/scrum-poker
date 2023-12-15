@@ -6,7 +6,7 @@ import {
   faCircleXmark,
 } from "@fortawesome/free-regular-svg-icons";
 import { CardLayoutComponent } from "@scp/components/card-layout/card-layout.component";
-import { ParticipantsHasVoted } from "@scp/types";
+import { Participant } from "@scp/types";
 
 @Component({
   selector: "scp-participants",
@@ -19,7 +19,7 @@ import { ParticipantsHasVoted } from "@scp/types";
         <div
           class="my-2 text-xl"
           *ngFor="let participant of participants">
-          @if (participant.voted) {
+          @if (!!participant.vote) {
             <fa-icon
               class="h-4 w-4 text-green-400"
               [icon]="icons.voted" />
@@ -35,7 +35,7 @@ import { ParticipantsHasVoted } from "@scp/types";
   `,
 })
 export class ParticipantsComponent {
-  @Input({ required: true }) participants: ParticipantsHasVoted[] | null = null;
+  @Input({ required: true }) participants: Participant[] | null = null;
 
   protected icons = {
     voted: faCircleCheck,

@@ -3,10 +3,7 @@ import { CardListComponent } from "@scp/components/card-list/card-list.component
 import { ParticipantsComponent } from "@scp/components/participants/participants.component";
 import { ResultComponent } from "@scp/components/result/result.component";
 import { FIBONACCI } from "@scp/types";
-import {
-  ParticipantsHasVoted,
-  ParticipantsVote,
-} from "src/app/types/participant";
+import { Participant } from "@scp/types";
 
 @Component({
   selector: "scp-test",
@@ -21,7 +18,7 @@ import {
           (selectCard)="setSelected($event)" />
       </div>
       <scp-participants [participants]="participants" />
-      <scp-result [participantsVotes]="participantVotes" />
+      <scp-result [participants]="participants" />
     </div>
   `,
 })
@@ -29,37 +26,26 @@ export class TestComponent {
   sequence = FIBONACCI;
   selectedCard = signal("");
 
-  participants: ParticipantsHasVoted[] = [
+  participants: Participant[] = [
     {
       name: "Donald",
-      voted: true,
-    },
-    {
-      name: "Joe",
-      voted: true,
-    },
-    {
-      name: "Obama",
-      voted: true,
-    },
-    {
-      name: "Bush",
-      voted: false,
-    },
-  ];
-
-  participantVotes: ParticipantsVote[] = [
-    {
-      name: "Donald",
+      uid: "Donald",
       vote: "20",
     },
     {
       name: "Joe",
+      uid: "Joe",
       vote: "8",
     },
     {
       name: "Obama",
+      uid: "Obama",
       vote: "13",
+    },
+    {
+      name: "Bush",
+      uid: "Bush",
+      vote: "20",
     },
   ];
 

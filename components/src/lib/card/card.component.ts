@@ -18,6 +18,5 @@ import { Component, Input } from "@angular/core";
 })
 export class CardComponent {
   @Input({ required: true }) text = "";
-
   @Input() selected = false;
 }

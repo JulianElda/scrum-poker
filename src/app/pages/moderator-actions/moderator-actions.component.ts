@@ -1,13 +1,12 @@
 import { Component, Input, inject } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { FirebaseService } from "@scp/services";
 import { GameStatus, Room } from "@scp/types";
 import { ButtonComponent } from "components";
-import { FirebaseService } from "@scp/services/firebase.service";
 
 @Component({
   selector: "scp-moderator-actions",
   standalone: true,
-  imports: [CommonModule, ButtonComponent],
+  imports: [ButtonComponent],
   styleUrl: "./moderator-actions.component.css",
   template: `
     @if (room?.moderator === sessionId) {

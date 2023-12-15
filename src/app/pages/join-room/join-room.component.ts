@@ -1,18 +1,18 @@
-import { CommonModule } from "@angular/common";
 import { Component, inject } from "@angular/core";
 import { Auth, signInAnonymously } from "@angular/fire/auth";
 import { FormControl } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-import { ButtonComponent } from "@scp/components/button/button.component";
-import { CardLayoutComponent } from "@scp/components/card-layout/card-layout.component";
-import { InputComponent } from "@scp/components/input/input.component";
-import { AuthService } from "@scp/services/auth.service";
-import { FirebaseService } from "@scp/services/firebase.service";
+import { AuthService, FirebaseService } from "@scp/services";
+import {
+  ButtonComponent,
+  CardLayoutComponent,
+  InputComponent,
+} from "components";
 
 @Component({
   selector: "scp-join-room",
   standalone: true,
-  imports: [CommonModule, CardLayoutComponent, InputComponent, ButtonComponent],
+  imports: [ButtonComponent, CardLayoutComponent, InputComponent],
   styleUrl: "./join-room.component.css",
   template: `
     <div class="mx-auto max-w-sm space-y-2">

@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit, inject, signal } from "@angular/core";
 import { Auth, User, user } from "@angular/fire/auth";
 import { ActivatedRoute, Router } from "@angular/router";
-import { AuthService } from "@scp/services/auth.service";
-import { FirebaseService } from "@scp/services/firebase.service";
+import { AuthService, FirebaseService } from "@scp/services";
 import {
   Subscription,
   combineLatest,
