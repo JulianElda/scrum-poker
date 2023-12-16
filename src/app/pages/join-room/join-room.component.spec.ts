@@ -1,4 +1,5 @@
 import { Auth } from "@angular/fire/auth";
+import { ActivatedRoute, Router } from "@angular/router";
 import {
   Spectator,
   byLabel,
@@ -6,8 +7,7 @@ import {
   createComponentFactory,
   mockProvider,
 } from "@ngneat/spectator/jest";
-import { FirebaseService } from "@scp/services/firebase.service";
-import { ActivatedRoute, Router } from "@angular/router";
+import { FirebaseService } from "@scp/services";
 import { JoinRoomComponent } from "./join-room.component";
 
 describe("JoinRoomComponent", () => {

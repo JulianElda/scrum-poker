@@ -7,7 +7,6 @@ import {
   createComponentFactory,
 } from "@ngneat/spectator/jest";
 import { InputComponent } from "./input.component";
-import { FormControl } from "@angular/forms";
 
 describe("InputComponent", () => {
   let spectator: Spectator<InputComponent>;
@@ -21,7 +20,7 @@ describe("InputComponent", () => {
         id: "input-id",
         label: "Input label",
         placeholder: "Input placeholder",
-        formControl: new FormControl("Initial value"),
+        value: "Initial value",
       },
     });
 

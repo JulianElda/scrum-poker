@@ -7,7 +7,7 @@ import {
   createComponentFactory,
   mockProvider,
 } from "@ngneat/spectator/jest";
-import { FirebaseService } from "@scp/services/firebase.service";
+import { FirebaseService } from "@scp/services";
 import { CreateRoomComponent } from "./create-room.component";
 
 describe("CreateRoomComponent", () => {

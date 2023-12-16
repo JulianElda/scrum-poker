@@ -6,7 +6,7 @@ import {
   mockProvider,
 } from "@ngneat/spectator/jest";
 import { FirebaseService } from "@scp/services";
-import { GameStatus } from "@scp/types";
+import { CARD_TYPES, GameStatus } from "@scp/types";
 import { ModeratorActionsComponent } from "./moderator-actions.component";
 
 describe("ModeratorActionsComponent", () => {
@@ -23,6 +23,7 @@ describe("ModeratorActionsComponent", () => {
           date: Timestamp.fromDate(new Date()),
           moderator: "moderator",
           status: GameStatus.VOTING,
+          scale: CARD_TYPES.COHN,
         },
         sessionId: "moderator",
       },
@@ -37,6 +38,7 @@ describe("ModeratorActionsComponent", () => {
           date: Timestamp.fromDate(new Date()),
           moderator: "moderator",
           status: GameStatus.REVEAL,
+          scale: CARD_TYPES.COHN,
         },
         sessionId: "moderator",
       },
@@ -51,11 +53,13 @@ describe("ModeratorActionsComponent", () => {
           date: Timestamp.fromDate(new Date()),
           moderator: "moderator",
           status: GameStatus.REVEAL,
+          scale: CARD_TYPES.COHN,
         },
         sessionId: "player",
       },
     });
     expect(spectator.query(byText("Reveal cards"))).not.toBeTruthy();
     expect(spectator.query(byText("Play again"))).not.toBeTruthy();
+    expect(spectator.query(byText("Moderate"))).toBeTruthy();
   });
 });
