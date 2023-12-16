@@ -10,19 +10,26 @@ import { ButtonComponent, SelectComponent } from "components";
   styleUrl: "./moderator-actions.component.css",
   template: `
     @if (room?.moderator === sessionId) {
-      <div class="mx-auto max-w-xs">
+      @if (room?.status === GameStatus.VOTING) {
         <scp-select
           [id]="'select-scale'"
           [label]="'Scale'"
           [options]="cardsOptions"
           [selectedValue]="startingScale"
           (selectChange)="onScaleChange($event)" />
-        <scp-button
-          class="mt-10 block"
-          [text]="moderatorButtonText"
-          [shrink]="false"
-          (clickButton)="onModeratorAction()" />
-      </div>
+      }
+      <scp-button
+        class="mt-10 block"
+        [text]="moderatorButtonText"
+        [shrink]="false"
+        (clickButton)="onModeratorAction()" />
+    } @else {
+      <scp-button
+        class="mt-10 block"
+        [text]="'Moderate'"
+        [shrink]="false"
+        [style]="'secondary'"
+        (clickButton)="onModerate()" />
     }
   `,
 })
@@ -33,6 +40,7 @@ export class ModeratorActionsComponent {
 
   private firebaseService = inject(FirebaseService);
 
+  protected GameStatus = GameStatus;
   protected readonly cardsOptions = cardsToOptions();
   protected readonly startingScale = this.cardsOptions[0].value;
 
@@ -61,5 +69,11 @@ export class ModeratorActionsComponent {
       scale: scale as CARD_TYPES,
     });
     this.firebaseService.resetParticipantsVote(this.roomId!);
+  }
+
+  protected onModerate() {
+    this.firebaseService.updateGameStatus({
+      moderator: this.sessionId!,
+    });
   }
 }

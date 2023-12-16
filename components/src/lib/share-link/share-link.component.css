@@ -1,6 +1,5 @@
 .input-link {
-  @apply !rounded-none !rounded-l-md
-    !text-gray-600;
+  @apply !rounded-none !rounded-l-md;
 }
 
 .copy-button {

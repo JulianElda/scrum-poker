@@ -16,7 +16,7 @@ import { faPaste } from "@fortawesome/free-regular-svg-icons";
         class="label">
         Game link
       </label>
-      <div class="flex rounded-md shadow-sm">
+      <div class="mt-1 flex rounded-md shadow-sm">
         <div class="relative flex flex-grow items-stretch">
           <input
             type="text"

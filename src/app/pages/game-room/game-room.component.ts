@@ -60,11 +60,13 @@ import {
             [participants]="participants | votedParticipant"
             [@resultCardsAnimation]="true" />
         }
-        <scp-moderator-actions
-          [room]="room"
-          [roomId]="roomId"
-          [sessionId]="sessionId"
-          [@componentEnterAnimation]="true" />
+        <div class="mx-auto max-w-xs">
+          <scp-moderator-actions
+            [room]="room"
+            [roomId]="roomId"
+            [sessionId]="sessionId"
+            [@componentEnterAnimation]="true" />
+        </div>
       </div>
     </div>
   `,

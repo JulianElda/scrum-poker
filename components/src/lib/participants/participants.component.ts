@@ -3,7 +3,7 @@ import { Component, Input } from "@angular/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import {
   faCircleCheck,
-  faCircleXmark,
+  faCommentDots,
 } from "@fortawesome/free-regular-svg-icons";
 import { CardLayoutComponent } from "@scp/components/card-layout/card-layout.component";
 import { Participant } from "@scp/types";
@@ -22,13 +22,13 @@ import { Participant } from "@scp/types";
           @if (!!participant.vote) {
             <fa-icon
               aria-hidden="true"
-              class="h-4 w-4 text-green-400"
+              class="inline-block h-5 w-5 text-sky-600 dark:text-sky-400"
               [icon]="icons.voted" />
             <span class="fa-sr-only sr-only">Ready</span>
           } @else {
             <fa-icon
               aria-hidden="true"
-              class="h-4 w-4 text-red-400"
+              class="inline-block h-5 w-5 text-gray-400"
               [icon]="icons.pending" />
             <span class="fa-sr-only sr-only">Pending</span>
           }
@@ -43,6 +43,6 @@ export class ParticipantsComponent {
 
   protected readonly icons = {
     voted: faCircleCheck,
-    pending: faCircleXmark,
+    pending: faCommentDots,
   };
 }

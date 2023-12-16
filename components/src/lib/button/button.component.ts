@@ -12,7 +12,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
       [attr.aria-label]="text"
       [attr.data-testid]="testId"
       (click)="onButtonClick()"
-      class="button"
+      class="button {{ style }}"
       [ngClass]="{ 'w-full': !shrink }">
       {{ text }}
     </button>
@@ -20,6 +20,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 })
 export class ButtonComponent {
   @Input({ required: true }) text = "";
+  @Input() style: "primary" | "secondary" = "primary";
   @Input() shrink = true;
   @Input() testId = "";
 

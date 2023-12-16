@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { faMoon, faSun } from "@fortawesome/free-regular-svg-icons";
+import { faMoon, faLightbulb } from "@fortawesome/free-regular-svg-icons";
 import { HyperlinkComponent } from "@scp/components/hyperlink/hyperlink.component";
 
 @Component({
@@ -12,16 +12,20 @@ import { HyperlinkComponent } from "@scp/components/hyperlink/hyperlink.componen
     <footer class="container mx-auto">
       <div class="flex justify-end">
         @if (isDarkTheme()) {
-          <fa-icon
-            aria-hidden="true"
-            class="h-6 w-6 cursor-pointer"
-            [icon]="icons.dark"
-            (click)="changeTheme()" />
+          <div>
+            <fa-icon
+              aria-hidden="true"
+              class="block h-6 w-6 cursor-pointer rounded-md border border-gray-100 bg-slate-700"
+              [fixedWidth]="true"
+              [icon]="icons.dark"
+              (click)="changeTheme()" />
+          </div>
           <span class="fa-sr-only sr-only">Change to light theme</span>
         } @else {
           <fa-icon
             aria-hidden="true"
-            class="h-6 w-6 cursor-pointer"
+            class="block h-6 w-6 cursor-pointer rounded-md border border-gray-700 bg-white"
+            [fixedWidth]="true"
             [icon]="icons.light"
             (click)="changeTheme()" />
           <span class="fa-sr-only sr-only">Change to dark theme</span>
@@ -37,8 +41,8 @@ import { HyperlinkComponent } from "@scp/components/hyperlink/hyperlink.componen
 })
 export class FooterComponent {
   protected readonly icons = {
-    dark: faMoon,
-    light: faSun,
+    dark: faLightbulb,
+    light: faMoon,
   };
 
   protected isDarkTheme() {

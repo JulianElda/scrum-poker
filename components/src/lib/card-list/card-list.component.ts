@@ -22,8 +22,8 @@ export class CardListComponent {
   @Output() selectCard = new EventEmitter<string | null>();
 
   protected clickCard(card: string) {
-    //if (card === this.selectedCard) this.selectedCard = null;
-    //else this.selectedCard = card;
-    this.selectCard.emit(card === this.selectedCard ? null : card);
+    if (card === this.selectedCard) this.selectedCard = null;
+    else this.selectedCard = card;
+    this.selectCard.emit(this.selectedCard);
   }
 }
