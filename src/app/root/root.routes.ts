@@ -1,7 +1,12 @@
 import { Route } from "@angular/router";
 import { gameRoomCanActivate } from "@scp/pages/game-room/game-room.resolver";
+import { HomeComponent } from "@scp/pages/home/home.component";
 
 export const rootRoutes: Route[] = [
+  {
+    path: "",
+    component: HomeComponent,
+  },
   {
     path: "test",
     loadComponent: () =>

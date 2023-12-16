@@ -12,8 +12,8 @@
     "baseUrl": "./",
     "paths": {
       "@scp/animations": ["./src/app/animations"],
-      "@scp/components/*": ["./components/src/lib/*"],
       "@scp/components": ["./components/src"],
+      "@scp/components/*": ["./components/src/lib/*"],
       "@scp/pages/*": ["./src/app/pages/*"],
       "@scp/pipes": ["./src/app/pipes"],
       "@scp/services": ["./src/app/services"],
