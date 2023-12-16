@@ -1,11 +1,11 @@
 import { Component, signal } from "@angular/core";
-import { COHN, Participant } from "@scp/types";
 import {
   CardListComponent,
   ParticipantsComponent,
   ResultComponent,
   SelectComponent,
-} from "components";
+} from "@scp/components";
+import { COHN, Participant } from "@scp/types";
 
 @Component({
   selector: "scp-test",

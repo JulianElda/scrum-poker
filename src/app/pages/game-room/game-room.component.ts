@@ -11,17 +11,17 @@ import {
   componentEnterAnimation,
   resultCardsAnimation,
 } from "@scp/animations";
-import { ModeratorActionsComponent } from "@scp/pages/moderator-actions/moderator-actions.component";
-import { VotedParticipantPipe } from "@scp/pipes";
-import { FirebaseService } from "@scp/services";
-import { CARDS, CARD_TYPES, GameStatus, Participant, Room } from "@scp/types";
 import {
   CardListComponent,
   ParticipantsComponent,
   ResultComponent,
   SessionCheckComponent,
   ShareLinkComponent,
-} from "components";
+} from "@scp/components";
+import { ModeratorActionsComponent } from "@scp/pages/moderator-actions/moderator-actions.component";
+import { VotedParticipantPipe } from "@scp/pipes";
+import { FirebaseService } from "@scp/services";
+import { CARDS, CARD_TYPES, GameStatus, Participant, Room } from "@scp/types";
 
 @Component({
   selector: "scp-game-room",

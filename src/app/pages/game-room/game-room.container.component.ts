@@ -1,10 +1,10 @@
 import { AsyncPipe, NgIf } from "@angular/common";
 import { Component, inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { SessionCheckComponent } from "@scp/components";
 import { GameRoomComponent } from "@scp/pages/game-room/game-room.component";
 import { AuthService, FirebaseService } from "@scp/services";
 import { Participant, Room } from "@scp/types";
-import { SessionCheckComponent } from "components";
 import { Observable, concatMap, map, take } from "rxjs";
 
 @Component({

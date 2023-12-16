@@ -2,12 +2,12 @@ import { Component, inject } from "@angular/core";
 import { Auth, signInAnonymously } from "@angular/fire/auth";
 import { FormControl } from "@angular/forms";
 import { Router } from "@angular/router";
-import { AuthService, FirebaseService } from "@scp/services";
 import {
   ButtonComponent,
   CardLayoutComponent,
   InputComponent,
-} from "components";
+} from "@scp/components";
+import { AuthService, FirebaseService } from "@scp/services";
 
 @Component({
   selector: "scp-create-room",

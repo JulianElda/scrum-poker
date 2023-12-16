@@ -1,11 +1,5 @@
 import { Clipboard } from "@angular/cdk/clipboard";
-import {
-  Component,
-  Input,
-  OnChanges,
-  SimpleChanges,
-  inject,
-} from "@angular/core";
+import { Component, Input, OnChanges, inject } from "@angular/core";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faPaste } from "@fortawesome/free-regular-svg-icons";
@@ -50,7 +44,7 @@ export class ShareLinkComponent implements OnChanges {
   private readonly clipboard = inject(Clipboard);
 
   protected readonly copyIcon = faPaste;
-  private joinLink = window.location.origin + "/join?id=" + this.roomId;
+  private joinLink: string = "";
   protected formControl = new FormControl("");
 
   ngOnChanges() {

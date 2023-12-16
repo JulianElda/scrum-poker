@@ -1,7 +1,7 @@
 import { Component, Input, inject } from "@angular/core";
+import { ButtonComponent, SelectComponent } from "@scp/components";
 import { FirebaseService } from "@scp/services";
 import { CARD_TYPES, GameStatus, Room, cardsToOptions } from "@scp/types";
-import { ButtonComponent, SelectComponent } from "components";
 
 @Component({
   selector: "scp-moderator-actions",
