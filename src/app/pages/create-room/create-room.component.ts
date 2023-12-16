@@ -1,6 +1,5 @@
 import { Component, inject } from "@angular/core";
 import { Auth, signInAnonymously } from "@angular/fire/auth";
-import { FormControl } from "@angular/forms";
 import { Router } from "@angular/router";
 import {
   ButtonComponent,
@@ -21,7 +20,8 @@ import { AuthService, FirebaseService } from "@scp/services";
           [id]="'input-id'"
           [label]="'Name'"
           [placeholder]="'My name'"
-          [formControl]="moderatorName" />
+          [value]="name"
+          (inputChange)="name = $event" />
         <scp-button
           [text]="'Create game'"
           [shrink]="false"
@@ -36,7 +36,7 @@ export class CreateRoomComponent {
   private authService = inject(AuthService);
   private firebaseService = inject(FirebaseService);
 
-  protected moderatorName = new FormControl("My name");
+  protected name = "";
 
   protected async onCreateRoom() {
     const authUser = await signInAnonymously(this.auth);
@@ -45,12 +45,12 @@ export class CreateRoomComponent {
     const participant = await this.firebaseService.createRoomParticipant(
       newRoom.id,
       authUser.user.uid,
-      this.moderatorName.value!
+      this.name
     );
 
     this.authService.sessionId$.next(authUser.user.uid);
     this.authService.participantId$.next(participant.id);
-    this.authService.participantName$.next(this.moderatorName.value!);
+    this.authService.participantName$.next(this.name);
     this.router.navigate(["/room", { id: newRoom.id }]);
   }
 }

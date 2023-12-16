@@ -1,13 +1,12 @@
 import { Clipboard } from "@angular/cdk/clipboard";
 import { Component, Input, OnChanges, inject } from "@angular/core";
-import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faPaste } from "@fortawesome/free-regular-svg-icons";
 
 @Component({
   selector: "scp-share-link",
   standalone: true,
-  imports: [FontAwesomeModule, ReactiveFormsModule],
+  imports: [FontAwesomeModule],
   styleUrls: ["./share-link.component.css", "./../input/input.component.css"],
   template: `
     <div class="mx-auto my-6 max-w-xs">
@@ -24,7 +23,7 @@ import { faPaste } from "@fortawesome/free-regular-svg-icons";
             name="game-link"
             id="game-link"
             class="input input-link"
-            [formControl]="formControl" />
+            [value]="joinLink" />
         </div>
         <button
           type="button"
@@ -44,15 +43,13 @@ export class ShareLinkComponent implements OnChanges {
   private readonly clipboard = inject(Clipboard);
 
   protected readonly copyIcon = faPaste;
-  private joinLink: string = "";
-  protected formControl = new FormControl("");
+  protected joinLink: string = "";
 
   ngOnChanges() {
-    this.joinLink = window.location.origin + "/join?id=" + this.roomId;
-    this.formControl = new FormControl(this.joinLink);
+    this.joinLink = window.location.origin + "/join;id=" + this.roomId;
   }
 
   protected onCopyLink() {
-    this.clipboard.copy(window.location.href);
+    this.clipboard.copy(this.joinLink);
   }
 }

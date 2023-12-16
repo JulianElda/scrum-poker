@@ -43,32 +43,30 @@ import { CARDS, CARD_TYPES, GameStatus, Participant, Room } from "@scp/types";
   ],
   styleUrl: "./game-room.component.css",
   template: `
-    <div class="mx-auto max-w-3xl">
-      <div class="mx-auto max-w-2xl">
-        @if (room?.status === GameStatus.VOTING) {
-          <scp-card-list
-            [cards]="cards"
-            [selectedCard]="participantVote"
-            (selectCard)="onSelectCard($event)"
-            [@cardListAnimation]="true" />
-          <scp-participants
-            [participants]="participants"
-            [@componentEnterAnimation]="true" />
-          <scp-share-link
-            [@componentEnterAnimation]="true"
-            [roomId]="roomId" />
-        } @else if (room?.status === GameStatus.REVEAL) {
-          <scp-result
-            [participants]="participants | votedParticipant"
-            [@resultCardsAnimation]="true" />
-        }
-        <div class="mx-auto max-w-xs">
-          <scp-moderator-actions
-            [room]="room"
-            [roomId]="roomId"
-            [sessionId]="sessionId"
-            [@componentEnterAnimation]="true" />
-        </div>
+    <div class="mx-auto max-w-5xl">
+      @if (room?.status === GameStatus.VOTING) {
+        <scp-card-list
+          [cards]="cards"
+          [selectedCard]="participantVote"
+          (selectCard)="onSelectCard($event)"
+          [@cardListAnimation]="true" />
+        <scp-participants
+          [participants]="participants"
+          [@componentEnterAnimation]="true" />
+        <scp-share-link
+          [@componentEnterAnimation]="true"
+          [roomId]="roomId" />
+      } @else if (room?.status === GameStatus.REVEAL) {
+        <scp-result
+          [participants]="participants | votedParticipant"
+          [@resultCardsAnimation]="true" />
+      }
+      <div class="mx-auto max-w-xs">
+        <scp-moderator-actions
+          [room]="room"
+          [roomId]="roomId"
+          [sessionId]="sessionId"
+          [@componentEnterAnimation]="true" />
       </div>
     </div>
   `,

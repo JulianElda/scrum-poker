@@ -1,11 +1,9 @@
-import { Component, Input } from "@angular/core";
-import { FormControl, ReactiveFormsModule } from "@angular/forms";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
   selector: "scp-input",
   standalone: true,
   styleUrl: "./input.component.css",
-  imports: [ReactiveFormsModule],
   template: `
     <div class="mb-2">
       <label
@@ -21,7 +19,9 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
           [id]="id"
           [attr.data-testid]="id"
           [placeholder]="placeholder"
-          [formControl]="formControl" />
+          (change)="onChange($event.target)"
+          [value]="value"
+          [maxLength]="32" />
       </div>
     </div>
   `,
@@ -30,5 +30,12 @@ export class InputComponent {
   @Input({ required: true }) id = "";
   @Input({ required: true }) label = "";
   @Input() placeholder = "";
-  @Input({ required: true }) formControl = new FormControl("");
+  @Input() value = "";
+
+  @Output() inputChange = new EventEmitter<string>();
+
+  protected onChange(eventTarget: EventTarget | null) {
+    const value = (eventTarget as HTMLInputElement)?.value;
+    this.inputChange.emit(value);
+  }
 }

@@ -1,6 +1,5 @@
 import { Component, inject } from "@angular/core";
 import { Auth, signInAnonymously } from "@angular/fire/auth";
-import { FormControl } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import {
   ButtonComponent,
@@ -21,7 +20,8 @@ import { AuthService, FirebaseService } from "@scp/services";
           [id]="'input-id'"
           [label]="'Name'"
           [placeholder]="'My name'"
-          [formControl]="name" />
+          [value]="name"
+          (inputChange)="name = $event" />
         <scp-button
           [text]="'Join'"
           [shrink]="false"
@@ -37,7 +37,7 @@ export class JoinRoomComponent {
   private authService = inject(AuthService);
   private firebaseService = inject(FirebaseService);
 
-  protected name = new FormControl("My name");
+  protected name = "";
 
   protected async onJoinRoom() {
     const roomId = this.activatedRoute.snapshot.paramMap.get("id") || "";
@@ -47,12 +47,12 @@ export class JoinRoomComponent {
     const participant = await this.firebaseService.createRoomParticipant(
       roomId,
       authUser.user.uid,
-      this.name.value!
+      this.name
     );
 
     this.authService.sessionId$.next(authUser.user.uid);
     this.authService.participantId$.next(participant.id);
-    this.authService.participantName$.next(this.name.value!);
+    this.authService.participantName$.next(this.name);
     this.router.navigate(["/room", { id: roomId }]);
   }
 }
