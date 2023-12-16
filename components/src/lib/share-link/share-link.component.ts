@@ -1,5 +1,11 @@
 import { Clipboard } from "@angular/cdk/clipboard";
-import { Component, inject } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  inject,
+} from "@angular/core";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faPaste } from "@fortawesome/free-regular-svg-icons";
@@ -38,12 +44,19 @@ import { faPaste } from "@fortawesome/free-regular-svg-icons";
     </div>
   `,
 })
-export class ShareLinkComponent {
+export class ShareLinkComponent implements OnChanges {
+  @Input({ required: true }) roomId: string | null = "";
+
   private readonly clipboard = inject(Clipboard);
 
   protected readonly copyIcon = faPaste;
+  private joinLink = window.location.origin + "/join?id=" + this.roomId;
+  protected formControl = new FormControl("");
 
-  protected readonly formControl = new FormControl(window.location.href || "");
+  ngOnChanges() {
+    this.joinLink = window.location.origin + "/join?id=" + this.roomId;
+    this.formControl = new FormControl(this.joinLink);
+  }
 
   protected onCopyLink() {
     this.clipboard.copy(window.location.href);

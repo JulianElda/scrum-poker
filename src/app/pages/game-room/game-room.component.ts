@@ -54,7 +54,9 @@ import {
           <scp-participants
             [participants]="participants"
             [@componentEnterAnimation]="true" />
-          <scp-share-link [@componentEnterAnimation]="true" />
+          <scp-share-link
+            [@componentEnterAnimation]="true"
+            [roomId]="roomId" />
         } @else if (room?.status === GameStatus.REVEAL) {
           <scp-result
             [participants]="participants | votedParticipant"
