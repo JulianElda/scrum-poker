@@ -3,7 +3,7 @@ import {
   byText,
   createComponentFactory,
 } from "@ngneat/spectator/jest";
-import { FIBONACCI } from "@scp/types";
+import { COHN } from "@scp/types";
 import { CardListComponent } from "./card-list.component";
 
 describe("CardListComponent", () => {
@@ -15,11 +15,11 @@ describe("CardListComponent", () => {
   test("shows card texts", () => {
     spectator = createComponent({
       props: {
-        cards: FIBONACCI,
+        cards: COHN,
       },
     });
 
-    [...FIBONACCI].forEach((text) => {
+    [...COHN].forEach((text) => {
       expect(spectator.query(byText(text))).toBeTruthy();
     });
   });
@@ -27,7 +27,7 @@ describe("CardListComponent", () => {
   test("emits selected card value", () => {
     spectator = createComponent({
       props: {
-        cards: FIBONACCI,
+        cards: COHN,
       },
     });
 
@@ -40,7 +40,7 @@ describe("CardListComponent", () => {
   test("emits null when deselecting card", () => {
     spectator = createComponent({
       props: {
-        cards: FIBONACCI,
+        cards: COHN,
       },
     });
 

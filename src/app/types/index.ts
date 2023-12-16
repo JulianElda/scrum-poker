@@ -1,4 +1,2 @@
-export * from "./card";
-export * from "./collections";
-export * from "./participant";
-export * from "./room";
+export * from "./cards";
+export * from "./firebase";

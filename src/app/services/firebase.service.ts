@@ -4,18 +4,24 @@ import {
   Firestore,
   Timestamp,
   addDoc,
-  updateDoc,
   collection,
   collectionData,
-  query,
-  where,
-  getDocs,
   doc,
-  getDoc,
-  limit,
   docData,
+  getDoc,
+  getDocs,
+  limit,
+  query,
+  updateDoc,
+  where,
 } from "@angular/fire/firestore";
-import { Collections, GameStatus, Participant, Room } from "@scp/types";
+import {
+  CARD_TYPES,
+  Collections,
+  GameStatus,
+  Participant,
+  Room,
+} from "@scp/types";
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -34,6 +40,7 @@ export class FirebaseService {
         date: Timestamp.fromDate(new Date()),
         moderator,
         status: GameStatus.VOTING,
+        scale: CARD_TYPES.COHN,
       }
     );
     return this.currentRoomRef;

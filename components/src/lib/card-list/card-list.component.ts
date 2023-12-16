@@ -1,7 +1,6 @@
 import { NgForOf } from "@angular/common";
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { CardComponent } from "@scp/components/card/card.component";
-import { FIBONACCI } from "@scp/types";
 
 @Component({
   selector: "scp-card-list",
@@ -17,14 +16,14 @@ import { FIBONACCI } from "@scp/types";
   `,
 })
 export class CardListComponent {
-  @Input({ required: true }) cards = FIBONACCI;
+  @Input({ required: true }) cards: string[] = [];
   @Input() selectedCard: string | null = null;
 
   @Output() selectCard = new EventEmitter<string | null>();
 
   protected clickCard(card: string) {
-    if (card === this.selectedCard) this.selectedCard = null;
-    else this.selectedCard = card;
-    this.selectCard.emit(this.selectedCard);
+    //if (card === this.selectedCard) this.selectedCard = null;
+    //else this.selectedCard = card;
+    this.selectCard.emit(card === this.selectedCard ? null : card);
   }
 }

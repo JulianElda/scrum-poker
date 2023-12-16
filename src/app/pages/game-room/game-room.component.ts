@@ -1,5 +1,11 @@
 import { AsyncPipe } from "@angular/common";
-import { Component, Input, inject } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  inject,
+} from "@angular/core";
 import {
   cardListAnimation,
   componentEnterAnimation,
@@ -8,7 +14,7 @@ import {
 import { ModeratorActionsComponent } from "@scp/pages/moderator-actions/moderator-actions.component";
 import { VotedParticipantPipe } from "@scp/pipes";
 import { FirebaseService } from "@scp/services";
-import { FIBONACCI, GameStatus, Participant, Room } from "@scp/types";
+import { CARDS, CARD_TYPES, GameStatus, Participant, Room } from "@scp/types";
 import {
   CardListComponent,
   ParticipantsComponent,
@@ -63,7 +69,7 @@ import {
     </div>
   `,
 })
-export class GameRoomComponent {
+export class GameRoomComponent implements OnChanges {
   @Input({ required: true }) roomId: string | null = "";
   @Input({ required: true }) participants: Participant[] = [];
   @Input({ required: true }) sessionId: string | null = "";
@@ -74,8 +80,15 @@ export class GameRoomComponent {
   private firebaseService = inject(FirebaseService);
 
   protected GameStatus = GameStatus;
+  protected cards = CARDS[this.room?.scale || CARD_TYPES.COHN].values;
 
-  protected cards = FIBONACCI;
+  ngOnChanges(change: SimpleChanges): void {
+    if (
+      change["room"]?.currentValue?.scale !==
+      change["room"]?.previousValue?.scale
+    )
+      this.cards = CARDS[this.room?.scale || CARD_TYPES.COHN].values;
+  }
 
   protected onSelectCard(card: string | null) {
     this.firebaseService.updateParticipantVote({

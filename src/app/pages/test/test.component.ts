@@ -1,14 +1,21 @@
 import { Component, signal } from "@angular/core";
-import { CardListComponent } from "@scp/components/card-list/card-list.component";
-import { ParticipantsComponent } from "@scp/components/participants/participants.component";
-import { ResultComponent } from "@scp/components/result/result.component";
-import { FIBONACCI } from "@scp/types";
-import { Participant } from "@scp/types";
+import { COHN, Participant } from "@scp/types";
+import {
+  CardListComponent,
+  ParticipantsComponent,
+  ResultComponent,
+  SelectComponent,
+} from "components";
 
 @Component({
   selector: "scp-test",
   standalone: true,
-  imports: [CardListComponent, ParticipantsComponent, ResultComponent],
+  imports: [
+    CardListComponent,
+    ParticipantsComponent,
+    ResultComponent,
+    SelectComponent,
+  ],
   styleUrl: "./test.component.css",
   template: `
     <div class="mx-auto max-w-3xl">
@@ -19,11 +26,17 @@ import { Participant } from "@scp/types";
       </div>
       <scp-participants [participants]="participants" />
       <scp-result [participants]="participants" />
+      <scp-select
+        [id]="'test-select'"
+        [label]="'Presidents'"
+        [options]="options"
+        [selectedValue]="options[2].value"
+        (selectChange)="onSelect($event)" />
     </div>
   `,
 })
 export class TestComponent {
-  sequence = FIBONACCI;
+  sequence = COHN;
   selectedCard = signal("");
 
   participants: Participant[] = [
@@ -49,7 +62,26 @@ export class TestComponent {
     },
   ];
 
+  options = [
+    {
+      label: "Trump",
+      value: "trump",
+    },
+    {
+      label: "Obama",
+      value: "obama",
+    },
+    {
+      label: "Joe",
+      value: "joe",
+    },
+  ];
+
   setSelected(value: string | null) {
     this.selectedCard.set(value!);
+  }
+
+  onSelect(value: string) {
+    console.log("TestComponent", value);
   }
 }

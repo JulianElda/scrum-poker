@@ -13,7 +13,7 @@ import { faPaste } from "@fortawesome/free-regular-svg-icons";
     <div class="mx-auto my-6 max-w-xs">
       <label
         for="game-link"
-        class="sr-only">
+        class="label">
         Game link
       </label>
       <div class="flex rounded-md shadow-sm">
