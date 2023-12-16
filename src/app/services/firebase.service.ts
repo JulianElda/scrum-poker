@@ -65,6 +65,28 @@ export class FirebaseService {
     return this.currentParticipantRef;
   }
 
+  async resetParticipantsVote(roomId: string) {
+    const participantCollectionRef = collection(
+      this.firestore,
+      Collections.ROOM,
+      roomId,
+      Collections.PARTICIPANT
+    );
+
+    const participantsDocs = await getDocs(participantCollectionRef);
+
+    participantsDocs.forEach(async (participantsDoc) => {
+      const resultDoc = doc(
+        this.firestore,
+        Collections.ROOM,
+        roomId,
+        Collections.PARTICIPANT,
+        participantsDoc.id!
+      );
+      await updateDoc(resultDoc, { vote: null });
+    });
+  }
+
   getParticipants(roomId: string): Observable<Participant[]> {
     return collectionData(
       collection(

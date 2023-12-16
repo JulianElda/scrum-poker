@@ -22,6 +22,7 @@ import { ButtonComponent } from "components";
 export class ModeratorActionsComponent {
   @Input({ required: true }) sessionId: string | null = "";
   @Input({ required: true }) room: Room | null = null;
+  @Input({ required: true }) roomId: string | null = "";
 
   private firebaseService = inject(FirebaseService);
 
@@ -32,13 +33,16 @@ export class ModeratorActionsComponent {
   }
 
   protected onModeratorAction() {
-    const status =
+    const newStatus =
       this.room?.status === GameStatus.VOTING
         ? GameStatus.REVEAL
         : GameStatus.VOTING;
 
     this.firebaseService.updateGameStatus({
-      status,
+      status: newStatus,
     });
+
+    if (newStatus === GameStatus.VOTING)
+      this.firebaseService.resetParticipantsVote(this.roomId!);
   }
 }

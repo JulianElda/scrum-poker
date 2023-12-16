@@ -56,6 +56,7 @@ import {
         }
         <scp-moderator-actions
           [room]="room"
+          [roomId]="roomId"
           [sessionId]="sessionId"
           [@componentEnterAnimation]="true" />
       </div>
