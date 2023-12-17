@@ -28,6 +28,7 @@ import { faPaste } from "@fortawesome/free-regular-svg-icons";
         <button
           type="button"
           class="copy-button"
+          aria-label="Copy to clipboard"
           (click)="onCopyLink()">
           <fa-icon
             class="h-4 w-4"

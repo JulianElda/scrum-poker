@@ -10,7 +10,7 @@
 }
 
 .primary {
-  @apply bg-sky-600 text-white hover:bg-sky-500;
+  @apply bg-sky-700 text-white hover:bg-sky-500;
 }
 
 .secondary {
