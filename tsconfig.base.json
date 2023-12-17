@@ -19,6 +19,7 @@
       "@scp/services": ["./src/app/services"],
       "@scp/types": ["./src/app/types"],
       "components": ["components/src/index.ts"]
-    }
+    },
+    "skipLibCheck": true
   }
 }
