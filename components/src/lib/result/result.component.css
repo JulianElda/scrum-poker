@@ -1,0 +1,3 @@
+.container {
+  @apply md:grid md:auto-cols-auto md:grid-flow-col md:place-content-evenly md:gap-4;
+}

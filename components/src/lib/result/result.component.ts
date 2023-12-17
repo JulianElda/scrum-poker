@@ -10,7 +10,7 @@ import { Participant } from "@scp/types";
   styleUrl: "./result.component.css",
   template: `
     <div class="mx-auto my-10 max-w-xl">
-      <div class="grid auto-cols-auto grid-flow-col place-content-evenly gap-4">
+      <div class="container">
         <div
           *ngFor="let participantsVote of participants"
           class="result-section">

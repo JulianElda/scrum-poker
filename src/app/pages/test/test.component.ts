@@ -18,12 +18,10 @@ import { COHN, Participant } from "@scp/types";
   ],
   styleUrl: "./test.component.css",
   template: `
-    <div class="mx-auto max-w-3xl">
-      <div class="mx-auto max-w-2xl">
-        <scp-card-list
-          [cards]="sequence"
-          (selectCard)="setSelected($event)" />
-      </div>
+    <div class="mx-auto max-w-5xl">
+      <scp-card-list
+        [cards]="sequence"
+        (selectCard)="setSelected($event)" />
       <scp-participants [participants]="participants" />
       <scp-result [participants]="participants" />
       <scp-select

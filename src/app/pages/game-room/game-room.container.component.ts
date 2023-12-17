@@ -19,13 +19,19 @@ import { Observable, concatMap, map, take } from "rxjs";
         (participantName$ | async) !== "" &&
         (gameRoom$ | async)
       ) {
-        <scp-game-room
-          [roomId]="roomId$ | async"
-          [sessionId]="sessionId$ | async"
-          [participantName]="participantName$ | async"
-          [participantVote]="participantVote$ | async"
-          [participants]="(participants$ | async)!"
-          [room]="gameRoom$ | async" />
+        @defer {
+          <scp-game-room
+            [roomId]="roomId$ | async"
+            [sessionId]="sessionId$ | async"
+            [participantName]="participantName$ | async"
+            [participantVote]="participantVote$ | async"
+            [participants]="(participants$ | async)!"
+            [room]="gameRoom$ | async" />
+        } @placeholder (minimum 200ms) {
+          <p class="p-4 text-center text-lg">now loading ...</p>
+        }
+      } @else {
+        <p class="p-4 text-center text-lg">now loading ...</p>
       }
     </scp-session-check>
   `,
