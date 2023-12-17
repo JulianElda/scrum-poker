@@ -19,13 +19,13 @@ import { CARD_TYPES, GameStatus, Room, cardsToOptions } from "@scp/types";
           (selectChange)="onScaleChange($event)" />
       }
       <scp-button
-        class="mt-10 block"
+        class="mt-6 block"
         [text]="moderatorButtonText"
         [shrink]="false"
         (clickButton)="onModeratorAction()" />
     } @else {
       <scp-button
-        class="mt-10 block"
+        class="mt-6 block"
         [text]="'Moderate'"
         [shrink]="false"
         [style]="'secondary'"

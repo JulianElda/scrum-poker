@@ -43,7 +43,7 @@ import { CARDS, CARD_TYPES, GameStatus, Participant, Room } from "@scp/types";
   ],
   styleUrl: "./game-room.component.css",
   template: `
-    <div class="mx-auto max-w-5xl">
+    <div class="mx-auto max-w-5xl space-y-6">
       @if (room?.status === GameStatus.VOTING) {
         <scp-card-list
           [cards]="cards"
@@ -51,9 +51,11 @@ import { CARDS, CARD_TYPES, GameStatus, Participant, Room } from "@scp/types";
           (selectCard)="onSelectCard($event)"
           [@cardListAnimation]="true" />
         <scp-participants
+          class="block"
           [participants]="participants"
           [@componentEnterAnimation]="true" />
         <scp-share-link
+          class="block"
           [@componentEnterAnimation]="true"
           [roomId]="roomId" />
       } @else if (room?.status === GameStatus.REVEAL) {

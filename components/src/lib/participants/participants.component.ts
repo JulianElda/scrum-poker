@@ -14,7 +14,7 @@ import { Participant } from "@scp/types";
   imports: [NgForOf, FontAwesomeModule, CardLayoutComponent],
   styleUrl: "./participants.component.css",
   template: `
-    <div class="mx-auto my-6 max-w-xs">
+    <div class="mx-auto max-w-xs">
       <scp-card-layout>
         <div
           class="my-2 text-xl"

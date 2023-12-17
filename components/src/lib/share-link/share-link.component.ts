@@ -9,7 +9,7 @@ import { faPaste } from "@fortawesome/free-regular-svg-icons";
   imports: [FontAwesomeModule],
   styleUrls: ["./share-link.component.css", "./../input/input.component.css"],
   template: `
-    <div class="mx-auto my-6 max-w-xs">
+    <div class="mx-auto max-w-xs">
       <label
         for="game-link"
         class="label">

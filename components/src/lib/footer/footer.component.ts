@@ -15,7 +15,7 @@ import { HyperlinkComponent } from "@scp/components/hyperlink/hyperlink.componen
           <div>
             <fa-icon
               aria-hidden="true"
-              class="block h-6 w-6 cursor-pointer rounded-md border border-gray-100 bg-slate-700"
+              class="block h-6 w-6 cursor-pointer rounded-md border border-gray-100 bg-white text-gray-900"
               [fixedWidth]="true"
               [icon]="icons.dark"
               (click)="changeTheme()" />
@@ -24,7 +24,7 @@ import { HyperlinkComponent } from "@scp/components/hyperlink/hyperlink.componen
         } @else {
           <fa-icon
             aria-hidden="true"
-            class="block h-6 w-6 cursor-pointer rounded-md border border-gray-700 bg-white"
+            class="block h-6 w-6 cursor-pointer rounded-md border border-gray-700 bg-slate-700 text-white"
             [fixedWidth]="true"
             [icon]="icons.light"
             (click)="changeTheme()" />

@@ -7,7 +7,7 @@ import { NgForOf } from "@angular/common";
   imports: [NgForOf],
   styleUrls: ["./select.component.css", "./../input/input.component.css"],
   template: `
-    <div class="mb-2">
+    <div>
       <label
         [for]="id"
         class="label">
