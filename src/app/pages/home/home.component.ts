@@ -9,7 +9,7 @@ import { ButtonComponent, HyperlinkComponent } from "@scp/components";
   template: `
     <div class="mx-auto max-w-4xl space-y-6 text-xl">
       <div class="space-y-2">
-        <h2 class="font-semibold">What is this?</h2>
+        <h2 class="font-heading font-semibold">What is this?</h2>
         <p>It's a web application to play Planning / Scrum poker online.</p>
         <p class="text-center">
           <scp-button
@@ -22,7 +22,7 @@ import { ButtonComponent, HyperlinkComponent } from "@scp/components";
       </div>
 
       <div class="space-y-2">
-        <h2 class="font-semibold">Planning poker?</h2>
+        <h2 class="font-heading font-semibold">Planning poker?</h2>
         <blockquote
           class="italic"
           cite="https://en.wikipedia.org/wiki/Planning_poker">
@@ -41,7 +41,7 @@ import { ButtonComponent, HyperlinkComponent } from "@scp/components";
       </div>
 
       <div class="space-y-2">
-        <h2 class="font-semibold">Who made this?</h2>
+        <h2 class="font-heading font-semibold">Who made this?</h2>
         <p>
           This application was developed by
           <scp-hyperlink

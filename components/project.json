@@ -28,6 +28,7 @@
         "browserTarget": "components:build-storybook",
         "compodoc": false,
         "styles": [
+          "src/assets/styles/heliotrope.css",
           "src/assets/styles/styles.css",
           "src/assets/styles/tailwind.css"
         ]

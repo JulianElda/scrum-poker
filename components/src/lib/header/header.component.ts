@@ -5,7 +5,9 @@ import { Component } from "@angular/core";
   standalone: true,
   styleUrl: "./header.component.css",
   template: `
-    <h1 class="text-center text-3xl font-semibold">Planning Poker</h1>
+    <h1 class="font-heading text-center text-3xl font-semibold">
+      Planning Poker
+    </h1>
   `,
 })
 export class HeaderComponent {}

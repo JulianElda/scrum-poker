@@ -8,7 +8,8 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      serif: "'Alegreya'",
+      serif: "'Heliotrope 3'",
+      heading: "'Heliotrope 4'",
     },
   },
   darkMode: "class",
