@@ -4048,7 +4048,7 @@
     remark-slug "^6.0.0"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-essentials@^7.5.3":
+"@storybook/addon-essentials@7.6.5":
   version "7.6.5"
   resolved "https://registry.yarnpkg.com/@storybook/addon-essentials/-/addon-essentials-7.6.5.tgz#0b785b58205eada1aa8374f2cba6bc39530147e9"
   integrity sha512-VCLj1JAEpGoqF5iFJOo1CZFFck/tg4m/98DLdQuNuXvxT6jqaF0NI9UUQuJLIGteDCR7NKRbTFc1hV3/Ev+Ziw==
@@ -4091,6 +4091,13 @@
     "@storybook/global" "^5.0.0"
     ts-dedent "^2.0.0"
 
+"@storybook/addon-themes@^7.6.5":
+  version "7.6.5"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-themes/-/addon-themes-7.6.5.tgz#573a32101d01fac532a568f88d25882bd5080cdf"
+  integrity sha512-TzGCxwdYAAlgeYuTYhMnL5KLutLVHrAXjVtWsYCYV+SVx+JklqCTk4zNUod64Z+sIYRMYd+YVC1KsWF2LHirow==
+  dependencies:
+    ts-dedent "^2.0.0"
+
 "@storybook/addon-toolbars@7.6.5":
   version "7.6.5"
   resolved "https://registry.yarnpkg.com/@storybook/addon-toolbars/-/addon-toolbars-7.6.5.tgz#a7e49640daad1b45926e453e36d8d8fecd88becf"
@@ -4103,7 +4110,7 @@
   dependencies:
     memoizerific "^1.11.3"
 
-"@storybook/angular@^7.5.3":
+"@storybook/angular@7.6.5":
   version "7.6.5"
   resolved "https://registry.yarnpkg.com/@storybook/angular/-/angular-7.6.5.tgz#9692892719fd092326be0b11fb6f4306e3d8b5da"
   integrity sha512-Q+diFi5ct4aHSegBLlryzNs4/WpefaMG1kVs9if9CvOu/286Pr0UMF75ldb3b+6ORIxe88vxdmLLs4idH+MjMQ==
@@ -4367,7 +4374,7 @@
   dependencies:
     ts-dedent "^2.0.0"
 
-"@storybook/core-server@7.6.5", "@storybook/core-server@^7.5.3":
+"@storybook/core-server@7.6.5":
   version "7.6.5"
   resolved "https://registry.yarnpkg.com/@storybook/core-server/-/core-server-7.6.5.tgz#266b650a5dd7917faf1d23119b16ea5637e87fc8"
   integrity sha512-BfKzK/ObTjUcPvE5/r1pogCifM/4nLRhOUYJl7XekwHkOQwn19e6H3/ku1W3jDoYXBu642Dc9X7l/ERjKTqxFg==

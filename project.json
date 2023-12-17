@@ -81,6 +81,40 @@
       "options": {
         "jestConfig": "jest.config.app.ts"
       }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "./.storybook",
+        "browserTarget": "scrum-poker:build-storybook",
+        "compodoc": false,
+        "styles": [
+          "src/assets/styles/heliotrope.css",
+          "src/assets/styles/styles.css",
+          "src/assets/styles/tailwind.css"
+        ]
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/scrum-poker",
+        "configDir": "./.storybook",
+        "browserTarget": "scrum-poker:build-storybook",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
     }
   }
 }

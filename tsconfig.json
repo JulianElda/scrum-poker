@@ -21,5 +21,10 @@
     "compilerOptions": {
       "module": "commonjs"
     }
-  }
+  },
+  "references": [
+    {
+      "path": "./.storybook/tsconfig.json"
+    }
+  ]
 }
