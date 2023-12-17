@@ -8,11 +8,6 @@ export const rootRoutes: Route[] = [
     component: HomeComponent,
   },
   {
-    path: "test",
-    loadComponent: () =>
-      import("./../pages/test/test.component").then((m) => m.TestComponent),
-  },
-  {
     path: "new",
     loadComponent: () =>
       import("./../pages/create-room/create-room.component").then(

@@ -11,9 +11,9 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
       type="button"
       [attr.aria-label]="text"
       [attr.data-testid]="testId"
-      (click)="onButtonClick()"
       class="button {{ style }}"
-      [ngClass]="{ 'w-full': !shrink }">
+      [ngClass]="{ 'w-full': !shrink }"
+      (click)="onButtonClick()">
       {{ text }}
     </button>
   `,

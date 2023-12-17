@@ -73,12 +73,16 @@ import { ButtonComponent, HyperlinkComponent } from "@scp/components";
             [link]="'https://jestjs.io/'"
             [testId]="'author-jest'" />,
           <scp-hyperlink
+            [text]="'Storybook'"
+            [link]="'https://storybook.js.org/'"
+            [testId]="'author-storybook'" />,
+          <scp-hyperlink
             [text]="'tailwindcss'"
             [link]="'https://tailwindcss.com/'"
             [testId]="'author-tailwind'" />,
           <scp-hyperlink
             [text]="'Font Awesome'"
-            [link]="'https://fontawesome.com//'"
+            [link]="'https://fontawesome.com/'"
             [testId]="'author-fontawesome'" />
         </p>
       </div>

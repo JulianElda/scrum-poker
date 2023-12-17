@@ -22,10 +22,16 @@ import { AuthService, FirebaseService } from "@scp/services";
           [placeholder]="'My name'"
           [value]="name"
           (inputChange)="name = $event" />
-        <scp-button
-          [text]="'Create game'"
-          [shrink]="false"
-          (clickButton)="onCreateRoom()" />
+        @if (!inProgress) {
+          <scp-button
+            [text]="'Create game'"
+            [shrink]="false"
+            (clickButton)="onCreateRoom()" />
+        } @else {
+          <scp-button
+            [text]="'...'"
+            [shrink]="false" />
+        }
       </scp-card-layout>
     </div>
   `,
@@ -37,20 +43,26 @@ export class CreateRoomComponent {
   private firebaseService = inject(FirebaseService);
 
   protected name = "";
+  protected inProgress = false;
 
   protected async onCreateRoom() {
-    const authUser = await signInAnonymously(this.auth);
+    this.inProgress = true;
+    try {
+      const authUser = await signInAnonymously(this.auth);
 
-    const newRoom = await this.firebaseService.createRoom(authUser.user.uid);
-    const participant = await this.firebaseService.createRoomParticipant(
-      newRoom.id,
-      authUser.user.uid,
-      this.name
-    );
+      const newRoom = await this.firebaseService.createRoom(authUser.user.uid);
+      const participant = await this.firebaseService.createRoomParticipant(
+        newRoom.id,
+        authUser.user.uid,
+        this.name
+      );
 
-    this.authService.sessionId$.next(authUser.user.uid);
-    this.authService.participantId$.next(participant.id);
-    this.authService.participantName$.next(this.name);
-    this.router.navigate(["/room", { id: newRoom.id }]);
+      this.authService.sessionId$.next(authUser.user.uid);
+      this.authService.participantId$.next(participant.id);
+      this.authService.participantName$.next(this.name);
+      this.router.navigate(["/room", { id: newRoom.id }]);
+    } catch (_err) {
+      this.inProgress = false;
+    }
   }
 }
