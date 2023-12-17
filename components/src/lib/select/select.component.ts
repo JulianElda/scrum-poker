@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { NgForOf } from "@angular/common";
 
 @Component({
   selector: "scp-select",
   standalone: true,
-  imports: [CommonModule],
+  imports: [NgForOf],
   styleUrls: ["./select.component.css", "./../input/input.component.css"],
   template: `
     <div class="mb-2">

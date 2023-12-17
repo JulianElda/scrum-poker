@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
-import { FooterComponent } from "@scp/components/footer/footer.component";
-import { HeaderComponent } from "@scp/components/header/header.component";
+import { FooterComponent, HeaderComponent } from "@scp/components";
 
 @Component({
   selector: "scp-root",
