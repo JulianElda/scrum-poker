@@ -3,9 +3,10 @@
 const fs = require("fs");
 const path = require("path");
 
-const brand = process.env.brand;
-
-const environmentFilesDirectory = path.join(__dirname, "../src/environments");
+const environmentFilesDirectory = path.join(
+  __dirname,
+  "../../src/environments"
+);
 const targetEnvironmentTemplateFileName = "environment.template.ts";
 const targetEnvironmentFileName = "environment.ts";
 
