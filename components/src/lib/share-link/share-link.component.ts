@@ -47,7 +47,8 @@ export class ShareLinkComponent implements OnInit {
   protected joinLink: string = "";
 
   ngOnInit() {
-    this.joinLink = window.location.origin + "/join;id=" + this.roomId;
+    this.joinLink =
+      window.location.origin + "/scrum-poker/#/join;id=" + this.roomId;
   }
 
   protected onCopyLink() {
