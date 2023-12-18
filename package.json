@@ -5,8 +5,7 @@
   "private": false,
   "scripts": {
     "start": "nx serve",
-    "build": "nx build --base-href=true",
-    "build:prod": "node prebuild.js && yarn build",
+    "build": "nx build",
     "test": "nx test",
     "lint": "nx lint"
   },
