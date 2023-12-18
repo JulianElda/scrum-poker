@@ -7,15 +7,20 @@ const environmentFilesDirectory = path.join(
   __dirname,
   "../../src/environments"
 );
-const targetEnvironmentTemplateFileName = "environment.template.ts";
-const targetEnvironmentFileName = "environment.ts";
 
-const environmentTemplate = fs.readFileSync(
-  path.join(environmentFilesDirectory, targetEnvironmentTemplateFileName),
-  { encoding: "utf-8" }
-);
-
-let updatedEnvironment = environmentTemplate;
+let updatedEnvironment = `
+export const environment = {
+  firebase: {
+    projectId: "projectId",
+    appId: "appId",
+    databaseURL: "databaseURL",
+    storageBucket: "storageBucket",
+    apiKey: "apiKey",
+    authDomain: "authDomain",
+    messagingSenderId: "messagingSenderId",
+  },
+};
+`;
 
 updatedEnvironment = updatedEnvironment.replace(
   "projectId",
@@ -48,7 +53,7 @@ updatedEnvironment = updatedEnvironment.replace(
 
 // Write environment file
 fs.writeFileSync(
-  path.join(environmentFilesDirectory, targetEnvironmentFileName),
+  path.join(environmentFilesDirectory, "environment.ts"),
   updatedEnvironment
 );
 
