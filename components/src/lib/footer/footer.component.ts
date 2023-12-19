@@ -14,6 +14,7 @@ import { HyperlinkComponent } from "@scp/components/hyperlink/hyperlink.componen
         @if (isDarkTheme()) {
           <div>
             <fa-icon
+              [attr.data-testid]="'footer-toggle-light'"
               aria-hidden="true"
               class="block h-6 w-6 cursor-pointer rounded-md border border-gray-100 bg-white text-gray-900"
               [fixedWidth]="true"
@@ -23,6 +24,7 @@ import { HyperlinkComponent } from "@scp/components/hyperlink/hyperlink.componen
           <span class="fa-sr-only sr-only">Change to light theme</span>
         } @else {
           <fa-icon
+            [attr.data-testid]="'footer-toggle-dark'"
             aria-hidden="true"
             class="block h-6 w-6 cursor-pointer rounded-md border border-gray-700 bg-slate-700 text-white"
             [fixedWidth]="true"
@@ -32,7 +34,7 @@ import { HyperlinkComponent } from "@scp/components/hyperlink/hyperlink.componen
         }
         <scp-hyperlink
           class="flex-1 text-end"
-          [text]="'Julius Polar@Github'"
+          [text]="'Julius Polar@GitHub'"
           [link]="'https://github.com/JulianElda/scrum-poker'"
           [testId]="'footer-link'" />
       </div>

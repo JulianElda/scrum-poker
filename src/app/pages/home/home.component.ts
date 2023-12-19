@@ -14,7 +14,7 @@ import { ButtonComponent, HyperlinkComponent } from "@scp/components";
         <p class="text-center">
           <scp-button
             [shrink]="true"
-            [id]="'home-new-game'"
+            [testId]="'home-new-game'"
             [style]="'secondary'"
             [text]="'Start a game'"
             (clickButton)="onStart()" />
@@ -49,7 +49,7 @@ import { ButtonComponent, HyperlinkComponent } from "@scp/components";
             [link]="'https://www.linkedin.com/in/julius-polar/'"
             [testId]="'author-github'" />. The source code is available on
           <scp-hyperlink
-            [text]="'Github'"
+            [text]="'GitHub'"
             [link]="'https://github.com/JulianElda/scrum-poker'"
             [testId]="'author-repo'" />.
         </p>
@@ -72,6 +72,10 @@ import { ButtonComponent, HyperlinkComponent } from "@scp/components";
             [text]="'jest'"
             [link]="'https://jestjs.io/'"
             [testId]="'author-jest'" />,
+          <scp-hyperlink
+            [text]="'Cypress'"
+            [link]="'https://www.cypress.io/'"
+            [testId]="'author-cypress'" />,
           <scp-hyperlink
             [text]="'Storybook'"
             [link]="'https://storybook.js.org/'"

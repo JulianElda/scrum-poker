@@ -22,6 +22,7 @@ import { faPaste } from "@fortawesome/free-regular-svg-icons";
             readonly
             name="game-link"
             id="game-link"
+            [attr.data-testid]="'game-link'"
             class="input input-link"
             [value]="joinLink" />
         </div>

@@ -15,7 +15,11 @@ import { Participant } from "@scp/types";
           *ngFor="let participantsVote of participants"
           class="result-section">
           <scp-card [text]="participantsVote.vote!" />
-          <div class="my-2 text-center text-xl">
+          <div
+            class="my-2 text-center text-xl"
+            [attr.data-testid]="
+              'result-' + participantsVote.name + '-' + participantsVote.vote
+            ">
             {{ participantsVote.name }}
           </div>
         </div>

@@ -9,6 +9,7 @@ import { Component, Input } from "@angular/core";
   template: `
     <div
       class="container"
+      [attr.data-testid]="'card-' + text"
       [ngClass]="{ selected: selected }">
       <div class="content">
         <span>{{ text }}</span>

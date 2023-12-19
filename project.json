@@ -115,6 +115,19 @@
           "quiet": true
         }
       }
+    },
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "scrum-poker:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "scrum-poker:serve:production"
+        }
+      }
     }
   }
 }

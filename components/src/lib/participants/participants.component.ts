@@ -18,16 +18,21 @@ import { Participant } from "@scp/types";
       <scp-card-layout>
         <div
           class="my-2 text-xl"
+          [attr.data-testid]="'participant-' + participant.name"
           *ngFor="let participant of participants">
           @if (!!participant.vote) {
             <fa-icon
               aria-hidden="true"
+              [attr.data-testid]="'participant-' + participant.name + '-ready'"
               class="inline-block h-5 w-5 text-sky-600 dark:text-sky-400"
               [icon]="icons.voted" />
             <span class="fa-sr-only sr-only">Ready</span>
           } @else {
             <fa-icon
               aria-hidden="true"
+              [attr.data-testid]="
+                'participant-' + participant.name + '-pending'
+              "
               class="inline-block h-5 w-5 text-gray-400"
               [icon]="icons.pending" />
             <span class="fa-sr-only sr-only">Pending</span>
