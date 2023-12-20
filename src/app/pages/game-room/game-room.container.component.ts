@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf } from "@angular/common";
+import { AsyncPipe } from "@angular/common";
 import { Component, inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { SessionCheckComponent } from "@scp/components";
@@ -10,7 +10,7 @@ import { Observable, concatMap, map, take } from "rxjs";
 @Component({
   selector: "scp-game-room-container",
   standalone: true,
-  imports: [AsyncPipe, NgIf, GameRoomComponent, SessionCheckComponent],
+  imports: [AsyncPipe, GameRoomComponent, SessionCheckComponent],
   template: `
     <scp-session-check>
       @if (

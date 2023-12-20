@@ -1,3 +1,5 @@
+import { Router } from "@angular/router";
+import { describe, expect, test } from "@jest/globals";
 import {
   Spectator,
   byTestId,
@@ -6,7 +8,6 @@ import {
   mockProvider,
 } from "@ngneat/spectator/jest";
 import { HomeComponent } from "./home.component";
-import { Router } from "@angular/router";
 
 describe("HomeComponent", () => {
   let spectator: Spectator<HomeComponent>;

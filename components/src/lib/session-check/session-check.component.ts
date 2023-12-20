@@ -16,7 +16,7 @@ import {
   selector: "scp-session-check",
   standalone: true,
   template: `
-    @if (isLoggedIn()) {
+    @if (isLoggedIn) {
       <ng-content></ng-content>
     }
   `,
@@ -28,7 +28,7 @@ export class SessionCheckComponent implements OnInit, OnDestroy {
   private authService = inject(AuthService);
   private firebaseService = inject(FirebaseService);
 
-  protected isLoggedIn = signal(false);
+  protected isLoggedIn = false;
 
   private userSignIn: Subscription | undefined;
   private currentParticipant: Subscription | undefined;
@@ -42,7 +42,7 @@ export class SessionCheckComponent implements OnInit, OnDestroy {
             if (!user) this.router.navigate(["/join", { id: roomId }]);
             else {
               this.authService.sessionId$.next(user.uid);
-              this.isLoggedIn.set(true);
+              this.isLoggedIn = true;
             }
           })
         );
