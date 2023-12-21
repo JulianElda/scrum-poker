@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject, signal } from "@angular/core";
+import { Component, OnDestroy, OnInit, inject } from "@angular/core";
 import { Auth, User, user } from "@angular/fire/auth";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AuthService, FirebaseService } from "@scp/services";

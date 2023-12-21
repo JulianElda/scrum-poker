@@ -2,8 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
-  OnChanges,
-  SimpleChanges,
   inject,
 } from "@angular/core";
 import { ButtonComponent } from "@scp/components/button/button.component";

@@ -3,7 +3,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
-  OnInit,
   inject,
 } from "@angular/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
