@@ -1,10 +1,17 @@
 import { NgForOf } from "@angular/common";
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from "@angular/core";
 import { CardComponent } from "@scp/components/card/card.component";
 
 @Component({
   selector: "scp-card-list",
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgForOf, CardComponent],
   styleUrl: "./card-list.component.css",
   template: `

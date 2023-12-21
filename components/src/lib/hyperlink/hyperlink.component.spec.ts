@@ -16,10 +16,10 @@ describe("HyperlinkComponent", () => {
       props: {
         link: "https://github.com/JulianElda",
         text: "JulianElda@GitHub",
-        testId: "github",
+        id: "test-id",
       },
     });
-    const hyperlinkElement = spectator.query(byTestId("github"));
+    const hyperlinkElement = spectator.query(byTestId("test-id"));
     expect(hyperlinkElement).toHaveText("JulianElda@GitHub");
     expect(hyperlinkElement).toHaveAttribute(
       "href",

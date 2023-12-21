@@ -14,7 +14,7 @@ import { ButtonComponent, HyperlinkComponent } from "@scp/components";
         <p class="text-center">
           <scp-button
             [shrink]="true"
-            [testId]="'home-new-game'"
+            [id]="'home-new-game'"
             [style]="'secondary'"
             [text]="'Start a game'"
             (clickButton)="onStart()" />
@@ -47,11 +47,11 @@ import { ButtonComponent, HyperlinkComponent } from "@scp/components";
           <scp-hyperlink
             [text]="'Julius Polar'"
             [link]="'https://www.linkedin.com/in/julius-polar/'"
-            [testId]="'author-github'" />. The source code is available on
+            [id]="'author-github'" />. The source code is available on
           <scp-hyperlink
             [text]="'GitHub'"
             [link]="'https://github.com/JulianElda/scrum-poker'"
-            [testId]="'author-repo'" />.
+            [id]="'author-repo'" />.
         </p>
 
         <p>
@@ -59,35 +59,35 @@ import { ButtonComponent, HyperlinkComponent } from "@scp/components";
           <scp-hyperlink
             [text]="'Firebase'"
             [link]="'https://firebase.google.com/'"
-            [testId]="'author-firebase'" />,
+            [id]="'author-firebase'" />,
           <scp-hyperlink
             [text]="'Angular'"
             [link]="'https://angular.dev/'"
-            [testId]="'author-angular'" />,
+            [id]="'author-angular'" />,
           <scp-hyperlink
             [text]="'nx'"
             [link]="'https://nx.dev/nx-api/angular'"
-            [testId]="'author-nx'" />,
+            [id]="'author-nx'" />,
           <scp-hyperlink
             [text]="'jest'"
             [link]="'https://jestjs.io/'"
-            [testId]="'author-jest'" />,
+            [id]="'author-jest'" />,
           <scp-hyperlink
             [text]="'Cypress'"
             [link]="'https://www.cypress.io/'"
-            [testId]="'author-cypress'" />,
+            [id]="'author-cypress'" />,
           <scp-hyperlink
             [text]="'Storybook'"
             [link]="'https://storybook.js.org/'"
-            [testId]="'author-storybook'" />,
+            [id]="'author-storybook'" />,
           <scp-hyperlink
             [text]="'tailwindcss'"
             [link]="'https://tailwindcss.com/'"
-            [testId]="'author-tailwind'" />,
+            [id]="'author-tailwind'" />,
           <scp-hyperlink
             [text]="'Font Awesome'"
             [link]="'https://fontawesome.com/'"
-            [testId]="'author-fontawesome'" />
+            [id]="'author-fontawesome'" />
         </p>
       </div>
     </div>

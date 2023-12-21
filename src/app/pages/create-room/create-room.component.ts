@@ -24,13 +24,13 @@ import { AuthService, FirebaseService } from "@scp/services";
           (inputChange)="name = $event" />
         @if (!inProgress) {
           <scp-button
-            [testId]="'create-game'"
+            [id]="'create-game'"
             [text]="'Create game'"
             [shrink]="false"
             (clickButton)="onCreateRoom()" />
         } @else {
           <scp-button
-            [testId]="'create-game-loading'"
+            [id]="'create-game-loading'"
             [text]="'...'"
             [shrink]="false" />
         }

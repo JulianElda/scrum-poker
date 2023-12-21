@@ -1,9 +1,16 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { NgForOf } from "@angular/common";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from "@angular/core";
 
 @Component({
   selector: "scp-select",
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgForOf],
   styleUrls: ["./select.component.css", "./../input/input.component.css"],
   template: `

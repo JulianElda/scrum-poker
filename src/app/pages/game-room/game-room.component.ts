@@ -13,12 +13,12 @@ import {
 } from "@scp/animations";
 import {
   CardListComponent,
+  ModeratorActionsComponent,
   ParticipantsComponent,
   ResultComponent,
   SessionCheckComponent,
   ShareLinkComponent,
 } from "@scp/components";
-import { ModeratorActionsComponent } from "@scp/pages/moderator-actions/moderator-actions.component";
 import { VotedParticipantPipe } from "@scp/pipes";
 import { FirebaseService } from "@scp/services";
 import { CARDS, CARD_TYPES, GameStatus, Participant, Room } from "@scp/types";
@@ -67,6 +67,7 @@ import { CARDS, CARD_TYPES, GameStatus, Participant, Room } from "@scp/types";
         <scp-moderator-actions
           [room]="room"
           [roomId]="roomId"
+          [scale]="room?.scale"
           [sessionId]="sessionId"
           [@componentEnterAnimation]="true" />
       </div>
@@ -84,14 +85,14 @@ export class GameRoomComponent implements OnChanges {
   private firebaseService = inject(FirebaseService);
 
   protected GameStatus = GameStatus;
-  protected cards = CARDS[this.room?.scale || CARD_TYPES.COHN].values;
+  protected cards = [...CARDS[this.room?.scale || CARD_TYPES.COHN].values];
 
   ngOnChanges(change: SimpleChanges): void {
     if (
       change["room"]?.currentValue?.scale !==
       change["room"]?.previousValue?.scale
     )
-      this.cards = CARDS[this.room?.scale || CARD_TYPES.COHN].values;
+      this.cards = [...CARDS[this.room?.scale || CARD_TYPES.COHN].values];
   }
 
   protected onSelectCard(card: string | null) {

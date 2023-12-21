@@ -1,11 +1,18 @@
 import { Clipboard } from "@angular/cdk/clipboard";
-import { Component, Input, OnInit, inject } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+  inject,
+} from "@angular/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faPaste } from "@fortawesome/free-regular-svg-icons";
 
 @Component({
   selector: "scp-share-link",
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FontAwesomeModule],
   styleUrls: ["./share-link.component.css", "./../input/input.component.css"],
   template: `
@@ -39,16 +46,15 @@ import { faPaste } from "@fortawesome/free-regular-svg-icons";
     </div>
   `,
 })
-export class ShareLinkComponent implements OnInit {
+export class ShareLinkComponent {
   @Input({ required: true }) roomId: string | null = "";
 
   private readonly clipboard = inject(Clipboard);
 
   protected readonly copyIcon = faPaste;
-  protected joinLink: string = "";
 
-  ngOnInit() {
-    this.joinLink = window.location.origin + "/join;id=" + this.roomId;
+  protected get joinLink(): string {
+    return window.location.origin + "/join;id=" + this.roomId;
   }
 
   protected onCopyLink() {

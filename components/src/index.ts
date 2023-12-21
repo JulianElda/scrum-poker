@@ -6,6 +6,7 @@ export * from "./lib/footer/footer.component";
 export * from "./lib/header/header.component";
 export * from "./lib/hyperlink/hyperlink.component";
 export * from "./lib/input/input.component";
+export * from "./lib/moderator-actions/moderator-actions.component";
 export * from "./lib/participants/participants.component";
 export * from "./lib/result/result.component";
 export * from "./lib/select/select.component";

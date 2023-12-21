@@ -1,9 +1,10 @@
 import { NgClass } from "@angular/common";
-import { Component, Input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 
 @Component({
   selector: "scp-card",
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgClass],
   styleUrl: "./card.component.css",
   template: `

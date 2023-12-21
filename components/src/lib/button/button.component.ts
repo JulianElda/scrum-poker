@@ -1,17 +1,25 @@
 import { NgClass } from "@angular/common";
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from "@angular/core";
 
 @Component({
   selector: "scp-button",
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgClass],
   styleUrl: "./button.component.css",
   template: `
     <button
       type="button"
-      [attr.aria-label]="text"
-      [attr.data-testid]="testId"
       class="button {{ style }}"
+      [id]="id"
+      [attr.aria-label]="text"
+      [attr.data-testid]="id"
       [ngClass]="{ 'w-full': !shrink }"
       (click)="onButtonClick()">
       {{ text }}
@@ -22,7 +30,7 @@ export class ButtonComponent {
   @Input({ required: true }) text = "";
   @Input() style: "primary" | "secondary" = "primary";
   @Input() shrink = true;
-  @Input() testId = "";
+  @Input() id = "";
 
   @Output() clickButton = new EventEmitter();
 

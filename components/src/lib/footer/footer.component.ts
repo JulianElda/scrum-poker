@@ -1,11 +1,12 @@
-import { Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { faMoon, faLightbulb } from "@fortawesome/free-regular-svg-icons";
+import { faLightbulb, faMoon } from "@fortawesome/free-regular-svg-icons";
 import { HyperlinkComponent } from "@scp/components/hyperlink/hyperlink.component";
 
 @Component({
   selector: "scp-footer",
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FontAwesomeModule, HyperlinkComponent],
   styleUrl: "./footer.component.css",
   template: `
@@ -36,7 +37,7 @@ import { HyperlinkComponent } from "@scp/components/hyperlink/hyperlink.componen
           class="flex-1 text-end"
           [text]="'Julius Polar@GitHub'"
           [link]="'https://github.com/JulianElda/scrum-poker'"
-          [testId]="'footer-link'" />
+          [id]="'footer-link'" />
       </div>
     </footer>
   `,

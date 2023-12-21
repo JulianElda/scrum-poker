@@ -1,8 +1,15 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from "@angular/core";
 
 @Component({
   selector: "scp-input",
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./input.component.css",
   template: `
     <div class="mb-2">

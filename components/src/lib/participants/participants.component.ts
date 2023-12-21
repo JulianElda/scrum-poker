@@ -1,5 +1,5 @@
 import { NgForOf } from "@angular/common";
-import { Component, Input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import {
   faCircleCheck,
@@ -11,6 +11,7 @@ import { Participant } from "@scp/types";
 @Component({
   selector: "scp-participants",
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgForOf, FontAwesomeModule, CardLayoutComponent],
   styleUrl: "./participants.component.css",
   template: `

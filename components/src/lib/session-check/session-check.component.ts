@@ -64,6 +64,8 @@ export class SessionCheckComponent implements OnInit, OnDestroy {
             this.authService.sessionId$.next(participant["uid"]);
             this.authService.participantName$.next(participant["name"]);
             this.authService.participantVote$.next(participant["vote"]);
+          } else {
+            this.router.navigate(["/join", { id: roomId }]);
           }
         });
     })

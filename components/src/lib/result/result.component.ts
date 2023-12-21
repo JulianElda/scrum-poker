@@ -1,11 +1,12 @@
 import { NgForOf } from "@angular/common";
-import { Component, Input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 import { CardComponent } from "@scp/components/card/card.component";
 import { Participant } from "@scp/types";
 
 @Component({
   selector: "scp-result",
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgForOf, CardComponent],
   styleUrl: "./result.component.css",
   template: `

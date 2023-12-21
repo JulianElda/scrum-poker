@@ -16,11 +16,11 @@ describe("ButtonComponent", () => {
     spectator = createComponent({
       props: {
         text: "Button text",
-        testId: "testid",
+        id: "test-id",
       },
     });
 
     expect(spectator.query(byText("Button text"))).toBeTruthy();
-    expect(spectator.query(byTestId("testid"))).toBeTruthy();
+    expect(spectator.query(byTestId("test-id"))).toBeTruthy();
   });
 });

@@ -1,11 +1,20 @@
-import { Component, Input, inject } from "@angular/core";
-import { ButtonComponent, SelectComponent } from "@scp/components";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  inject,
+} from "@angular/core";
+import { ButtonComponent } from "@scp/components/button/button.component";
+import { SelectComponent } from "@scp/components/select/select.component";
 import { FirebaseService } from "@scp/services";
 import { CARD_TYPES, GameStatus, Room, cardsToOptions } from "@scp/types";
 
 @Component({
   selector: "scp-moderator-actions",
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ButtonComponent, SelectComponent],
   styleUrl: "./moderator-actions.component.css",
   template: `
@@ -15,21 +24,21 @@ import { CARD_TYPES, GameStatus, Room, cardsToOptions } from "@scp/types";
           [id]="'select-scale'"
           [label]="'Scale'"
           [options]="cardsOptions"
-          [selectedValue]="startingScale"
+          [selectedValue]="selectedScale"
           (selectChange)="onScaleChange($event)" />
       }
       <scp-button
-        [testId]="'moderator-action'"
         class="mt-6 block"
-        [text]="moderatorButtonText"
         [shrink]="false"
+        [id]="'moderator-action'"
+        [text]="moderatorButtonText"
         (clickButton)="onModeratorAction()" />
     } @else {
       <scp-button
-        [testId]="'moderator-moderate'"
         class="mt-6 block"
-        [text]="'Moderate'"
         [shrink]="false"
+        [id]="'moderator-moderate'"
+        [text]="'Moderate'"
         [style]="'secondary'"
         (clickButton)="onModerate()" />
     }
@@ -39,12 +48,20 @@ export class ModeratorActionsComponent {
   @Input({ required: true }) sessionId: string | null = "";
   @Input({ required: true }) room: Room | null = null;
   @Input({ required: true }) roomId: string | null = "";
+  @Input({ required: true }) scale: CARD_TYPES | undefined = CARD_TYPES.COHN;
 
   private firebaseService = inject(FirebaseService);
 
   protected GameStatus = GameStatus;
   protected readonly cardsOptions = cardsToOptions();
-  protected readonly startingScale = this.cardsOptions[0].value;
+
+  protected get selectedScale(): string {
+    return this.cardsOptions[
+      this.cardsOptions
+        .map((option) => option.value)
+        .indexOf(this.scale as string)
+    ].value;
+  }
 
   protected get moderatorButtonText(): string {
     return this.room?.status === GameStatus.VOTING
