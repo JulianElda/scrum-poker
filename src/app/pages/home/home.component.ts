@@ -1,17 +1,37 @@
-import { Component, inject } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { ButtonComponent, HyperlinkComponent } from "@scp/components";
 
 @Component({
   selector: "scp-home",
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ButtonComponent, HyperlinkComponent],
   template: `
     <div class="mx-auto max-w-4xl space-y-6 text-xl">
       <div class="space-y-2">
-        <h2 class="font-heading font-semibold">What is this?</h2>
-        <p>It's a web application to play Planning / Scrum poker online.</p>
-        <p class="text-center">
+        <p><strong>Item #:</strong> SCP-Poker</p>
+      </div>
+
+      <div class="space-y-2">
+        <p><strong>Object Class:</strong> Safe</p>
+      </div>
+
+      <div class="space-y-2">
+        <p>
+          <strong>Special Containment Procedures:</strong>
+          SCP-Poker is to be contained in a secure server in
+          <scp-hyperlink
+            [text]="'GitHub'"
+            [link]="'https://github.com/JulianElda/scrum-poker'"
+            [id]="'home-github'" />. Due to its open-source nature, access to
+          SCP-Poker is unrestricted for any personnel with access to this
+          document.
+        </p>
+
+        <p>Personnel may initiate a new planning session here.</p>
+
+        <p class="pt-2 text-center">
           <scp-button
             [shrink]="true"
             [id]="'home-new-game'"
@@ -22,72 +42,84 @@ import { ButtonComponent, HyperlinkComponent } from "@scp/components";
       </div>
 
       <div class="space-y-2">
-        <h2 class="font-heading font-semibold">Planning poker?</h2>
-        <blockquote
-          class="italic"
-          cite="https://en.wikipedia.org/wiki/Planning_poker">
-          <p>
-            "Planning poker, also called Scrum poker, is a consensus-based,
-            gamified technique for estimating, mostly used for timeboxing in
-            Agile principles. In planning poker, members of the group make
-            estimates by playing numbered cards face-down to the table, instead
-            of speaking them aloud. The cards are revealed, and the estimates
-            are then discussed. By hiding the figures in this way, the group can
-            avoid the cognitive bias of anchoring, where the first number spoken
-            aloud sets a precedent for subsequent estimates. "
-          </p>
-          <footer class="text-right">Gandhi (probably)</footer>
-        </blockquote>
-      </div>
+        <p class="pb-2">
+          <strong>Description:</strong> "SCrum Planning - Poker" (SCP-Poker) is
+          a web application to play Scrum Poker online. "Scrum Poker" or
+          "Planning Poker", is a technique for project planning and estimation,
+          commonly used in agile software development.
+        </p>
 
-      <div class="space-y-2">
-        <h2 class="font-heading font-semibold">Who made this?</h2>
-        <p>
-          This application was developed by
+        <p class="pb-2">
+          SCP-Poker was developed by
           <scp-hyperlink
             [text]="'Julius Polar'"
             [link]="'https://www.linkedin.com/in/julius-polar/'"
-            [id]="'author-github'" />. The source code is available on
-          <scp-hyperlink
-            [text]="'GitHub'"
-            [link]="'https://github.com/JulianElda/scrum-poker'"
-            [id]="'author-repo'" />.
-        </p>
-
-        <p>
-          The tech stack:
+            [id]="'home-linkedin'" />, and is built with
           <scp-hyperlink
             [text]="'Firebase'"
             [link]="'https://firebase.google.com/'"
-            [id]="'author-firebase'" />,
+            [id]="'home-firebase'" />,
           <scp-hyperlink
             [text]="'Angular'"
             [link]="'https://angular.dev/'"
-            [id]="'author-angular'" />,
+            [id]="'home-angular'" />,
           <scp-hyperlink
             [text]="'nx'"
             [link]="'https://nx.dev/nx-api/angular'"
-            [id]="'author-nx'" />,
+            [id]="'home-nx'" />,
           <scp-hyperlink
             [text]="'jest'"
             [link]="'https://jestjs.io/'"
-            [id]="'author-jest'" />,
+            [id]="'home-jest'" />,
           <scp-hyperlink
             [text]="'Cypress'"
             [link]="'https://www.cypress.io/'"
-            [id]="'author-cypress'" />,
+            [id]="'home-cypress'" />,
           <scp-hyperlink
             [text]="'Storybook'"
             [link]="'https://storybook.js.org/'"
-            [id]="'author-storybook'" />,
+            [id]="'home-storybook'" />,
           <scp-hyperlink
             [text]="'tailwindcss'"
             [link]="'https://tailwindcss.com/'"
-            [id]="'author-tailwind'" />,
+            [id]="'home-tailwind'" />,
           <scp-hyperlink
             [text]="'Font Awesome'"
             [link]="'https://fontawesome.com/'"
-            [id]="'author-fontawesome'" />
+            [id]="'home-fontawesome'" />.
+        </p>
+
+        <p class="pb-2">
+          SCP-Poker does not exhibit any anomalous properties on its own and
+          functions like a typical planning poker tool, though it appears to be
+          in its early developmental stages, and may inhibit unknown anomalies.
+        </p>
+
+        <p>
+          Initial testing of SCP-Poker has shown promising results in improving
+          many team's efficiency and productivity. Further research and
+          development is ongoing to improve its potential applications.
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <p>
+          <strong>Addendum 1:</strong> A dark mode button has been discovered in
+          the footer of the application, allowing personnel to toggle between
+          light and dark mode.
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <p>
+          <strong>Note:</strong> This SCP entry is entirely fictional and
+          created for entertainment purposes. It does not adhere to the canon of
+          the
+          <scp-hyperlink
+            [text]="'SCP Foundation'"
+            [link]="'https://scp-wiki.wikidot.com/'"
+            [id]="'home-scp'" />
+          and is not part of the official SCP database.
         </p>
       </div>
     </div>

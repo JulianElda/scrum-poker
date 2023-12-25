@@ -9,7 +9,7 @@ import { FooterComponent, HeaderComponent } from "@scp/components";
   styleUrl: "./root.component.css",
   template: `
     <scp-header />
-    <div class="mx-auto max-w-7xl">
+    <div class="mx-auto my-4 max-w-7xl">
       <router-outlet />
     </div>
     <scp-footer />

@@ -20,14 +20,15 @@ describe("HomeComponent", () => {
     spectator = createComponent();
 
     expect(spectator.query(byText("Start a game"))).toBeTruthy();
-    expect(spectator.query(byTestId("author-github"))).toBeTruthy();
-    expect(spectator.query(byTestId("author-repo"))).toBeTruthy();
-    expect(spectator.query(byTestId("author-firebase"))).toBeTruthy();
-    expect(spectator.query(byTestId("author-angular"))).toBeTruthy();
-    expect(spectator.query(byTestId("author-nx"))).toBeTruthy();
-    expect(spectator.query(byTestId("author-jest"))).toBeTruthy();
-    expect(spectator.query(byTestId("author-storybook"))).toBeTruthy();
-    expect(spectator.query(byTestId("author-tailwind"))).toBeTruthy();
-    expect(spectator.query(byTestId("author-fontawesome"))).toBeTruthy();
+    expect(spectator.query(byTestId("home-github"))).toBeTruthy();
+    expect(spectator.query(byTestId("home-linkedin"))).toBeTruthy();
+    expect(spectator.query(byTestId("home-firebase"))).toBeTruthy();
+    expect(spectator.query(byTestId("home-angular"))).toBeTruthy();
+    expect(spectator.query(byTestId("home-nx"))).toBeTruthy();
+    expect(spectator.query(byTestId("home-jest"))).toBeTruthy();
+    expect(spectator.query(byTestId("home-storybook"))).toBeTruthy();
+    expect(spectator.query(byTestId("home-tailwind"))).toBeTruthy();
+    expect(spectator.query(byTestId("home-fontawesome"))).toBeTruthy();
+    expect(spectator.query(byTestId("home-scp"))).toBeTruthy();
   });
 });

@@ -5,7 +5,7 @@
     "module": "commonjs",
     "types": ["jest", "node"]
   },
-  "exclude": ["*.stories.ts"],
+  "exclude": ["src/**/*.stories.ts"],
   "include": [
     "jest.config.ts",
     "src/**/*.test.ts",
