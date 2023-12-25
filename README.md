@@ -1,27 +1,29 @@
-# ScrumPoker
+# Scrum Poker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.10.
+Try it out live [https://julianelda.io/planning-poker](https://julianelda.io/planning-poker).
 
-## Development server
+This project is an open-source Scrum / Planning Poker web application. Create a new game and invite your team members to estimate story points. Featuring selectable scales (Cohn, Fibonnaci, T-Shirt) and dark mode.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The app is built with Firebase and Angular, scaffolded with Nx, styled with tailwindcss and Fontawesome, and tested with jest and Cypress.
 
-## Code scaffolding
+## Local development
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Create an `environment.ts` file from the template in `src/assets/environments` and fill in your Firebase configuration.
+
+Run `yarn start` or `nx serve` to run the application locally in `localhost:4200`.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `yarn build` or `nx serve` to build the project. The build artifacts will be stored in `build/browser` directory.
 
-## Running unit tests
+## Testing
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `nx run scrum-poker:test --watch` to execute unit tests for the main project (`scrum-poker`) or `nx run components:test --watch` to run unit tests for `components` library.
 
-## Running end-to-end tests
+Run `nx run scrum-poker:e2e --watch` to run Cypress in headed mode.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Misc
 
-## Further help
+This application, including source code can be used under [MIT License](LICENSE).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[Planning Poker](https://www.mountaingoatsoftware.com/agile/planning-poker/license) is a registered trademark of Mountain Goat Software, LLC.

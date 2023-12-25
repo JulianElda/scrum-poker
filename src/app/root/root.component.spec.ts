@@ -19,6 +19,6 @@ describe("RootComponent", () => {
   test("shows title and footer", () => {
     spectator = createComponent();
     expect(spectator.query(byTestId("footer-link"))).toBeTruthy();
-    expect(spectator.query(byText("SCP-Poker"))).toBeTruthy();
+    expect(spectator.query(byText("Planning Poker"))).toBeTruthy();
   });
 });
