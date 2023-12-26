@@ -1,10 +1,5 @@
 import { Clipboard } from "@angular/cdk/clipboard";
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  inject,
-} from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { faPaste } from "@fortawesome/free-regular-svg-icons";
 
@@ -46,14 +41,12 @@ import { faPaste } from "@fortawesome/free-regular-svg-icons";
   `,
 })
 export class ShareLinkComponent {
-  @Input({ required: true }) roomId: string | null = "";
-
   private readonly clipboard = inject(Clipboard);
 
   protected readonly copyIcon = faPaste;
 
   protected get joinLink(): string {
-    return window.location.origin + "/join;id=" + this.roomId;
+    return window.location.href.replace("room;id", "join;id");
   }
 
   protected onCopyLink() {

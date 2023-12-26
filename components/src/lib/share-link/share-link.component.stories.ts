@@ -19,8 +19,4 @@ const meta: Meta<ShareLinkComponent> = {
 export default meta;
 type Story = StoryObj<ShareLinkComponent>;
 
-export const ShareLink: Story = {
-  args: {
-    roomId: "aXN9HDKy10M5oT8yC7b9waALkKv6u10z",
-  },
-};
+export const ShareLink: Story = {};

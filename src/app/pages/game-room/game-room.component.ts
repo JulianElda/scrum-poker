@@ -56,8 +56,7 @@ import { CARDS, CARD_TYPES, GameStatus, Participant, Room } from "@scp/types";
           [@componentEnterAnimation]="true" />
         <scp-share-link
           class="block"
-          [@componentEnterAnimation]="true"
-          [roomId]="roomId" />
+          [@componentEnterAnimation]="true" />
       } @else if (room?.status === GameStatus.REVEAL) {
         <scp-result
           [participants]="participants | votedParticipant"

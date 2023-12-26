@@ -4,14 +4,14 @@ import {
   createComponentFactory,
   mockProvider,
 } from "@ngneat/spectator/jest";
-import { RouterLink } from "@angular/router";
+import { ActivatedRoute, RouterLink } from "@angular/router";
 import { HeaderComponent } from "./header.component";
 
 describe("HeaderComponent", () => {
   let spectator: Spectator<HeaderComponent>;
   const createComponent = createComponentFactory({
     component: HeaderComponent,
-    providers: [mockProvider(RouterLink)],
+    providers: [mockProvider(RouterLink), mockProvider(ActivatedRoute)],
   });
 
   test("shows title", () => {
