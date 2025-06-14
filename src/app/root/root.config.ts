@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom } from "@angular/core";
+import { ApplicationConfig } from "@angular/core";
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
 import { getAuth, provideAuth } from "@angular/fire/auth";
 import { getFirestore, provideFirestore } from "@angular/fire/firestore";
@@ -9,11 +9,9 @@ import { rootRoutes } from "./root.routes";
 
 export const rootConfig: ApplicationConfig = {
   providers: [
-    importProvidersFrom(
-      provideFirebaseApp(() => initializeApp(environment.firebase))
-    ),
-    importProvidersFrom(provideAuth(() => getAuth())),
-    importProvidersFrom(provideFirestore(() => getFirestore())),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
     provideRouter(rootRoutes),
     provideAnimations(),
   ],

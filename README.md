@@ -10,11 +10,11 @@ The app is built with Firebase and Angular, scaffolded with Nx, styled with tail
 
 Create an `environment.ts` file from the template in `src/assets/environments` and fill in your Firebase configuration.
 
-Run `yarn start` or `nx serve` to run the application locally in `localhost:4200`.
+Run `nx serve` to run the application locally in `localhost:4200`.
 
 ## Build
 
-Run `yarn build` or `nx serve` to build the project. The build artifacts will be stored in `build/browser` directory.
+Run `nx serve` to build the project. The build artifacts will be stored in `build/browser` directory.
 
 ## Testing
 
